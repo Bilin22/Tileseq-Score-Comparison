@@ -39,7 +39,7 @@ old_score <- read.csv("../data/urn_mavedb_00000001-c-1_scores.csv") %>%
 match_df <- merge(new_score, old_score, by = "hgvs_pro") %>% 
   rename(new.score = score.x, new.se = se.x, old.score = score.y, old.se = se.y, 
          mut = mut.x, wt = wt.x, type = type.x) %>% 
-  select(new.score, old.score, new.se, old.se, wt, mut, type)
+  select(hgvs_pro, new.score, old.score, new.se, old.se, wt, mut, type)
 ```
 
 ```{r}
