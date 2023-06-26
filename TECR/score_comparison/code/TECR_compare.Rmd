@@ -1,0 +1,99 @@
+---
+title: "TECR"
+author: "Bilin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(ggpubr)
+library(tidyr)
+library(patchwork)
+# library(plotly)
+```
+
+
+```{r old}
+map_2021 <- read.csv(file = "../data/urn_mavedb_00000067-a-1_scores.csv") %>% 
+  select(hgvs_pro, score, score_sd) %>% 
+  distinct() %>% 
+  mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>% 
+  mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
+  mutate(type = ifelse(wt==mut, "synonymous", ifelse(grepl("Ter$", mut), "nonsense", "missense")))
+```
+
+```{r new}
+map_2023 <- read.csv(file = "../data/select_t1_simple_aa.csv", skip = 16) %>% 
+  select(hgvs_pro, score, se) %>% 
+  mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
+  mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
+  mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
+                                                            "nonsense", "missense"))) %>% 
+  mutate(hgvs_pro = ifelse(grepl("=$", hgvs_pro), paste(substr(hgvs_pro, 1, 5), substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), substr(hgvs_pro,3, 5), sep = ''), hgvs_pro))
+# match the formatting of the new df with the mavedb old version.
+```
+
+```{r}
+match_df <- merge(map_2023, map_2021, by = "hgvs_pro") %>% 
+  rename(score.2023 = score.x, score.2021 = score.y, se.2023 = se, se.2021 = score_sd,
+         mutation = type.x, wt = wt.x) %>% 
+  drop_na() %>% 
+  select(hgvs_pro, score.2023, score.2021, se.2023, se.2021, wt, mutation)
+```
+
+```{r score facet}
+facet_aa <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
+  geom_point(aes(color=wt, alpha = 0.9)) +
+  facet_wrap(~ wt, scales = "fixed") +
+  # geom_smooth(method = "lm", aes(color=wt))+
+  stat_cor(method= "spearman", label.x = -1, label.y = -3, cor.coef.name = "rho", aes(label = after_stat(r.label))) +
+  geom_rug(aes(color=wt))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45), legend.position = "none")
+```
+
+```{r mutation}
+facet_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
+  geom_point(aes(color=mutation, alpha = 0.8)) +
+  facet_wrap(~ mutation, scales = "fixed") +
+  # geom_smooth(method = "lm", aes(color=wt))+
+  stat_cor(method= "spearman", label.x = -1, label.y = -3, cor.coef.name = "rho", aes(label = after_stat(r.label))) +
+  geom_rug(aes(color=mutation))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45), legend.position = "none")
+
+```
+
+```{r combined aa}
+combined_aa <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
+  geom_point(aes(color=wt, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
+  stat_cor(method= "spearman", label.x = 2.5, label.y = -2, cor.coef.name = "rho",aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw()+
+  theme(legend.position = "bottom") +
+  theme(legend.key.size = unit(0.5, "cm")) 
+```
+
+```{r combined mutation type}
+combined_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
+  geom_point(aes(color=mutation, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
+  stat_cor(method= "spearman", label.x = 2.5, label.y = -2, cor.coef.name = "rho",aes(label = ..r.label..)) +
+  geom_rug(aes(color=mutation))+
+  theme_bw()+
+  theme(legend.position = "bottom") +
+  theme(legend.key.size = unit(0.5, "cm")) 
+```
+
+```{r}
+facet_aa + combined_aa
+# ggsave(filename = "../output/TECR_comparison_aa.jpg", dpi = 700, width = 13, height = 8)
+```
+```{r}
+facet_mutation + combined_mutation
+# ggsave(filename = "../output/TECR_comparison_mutation.jpg", dpi = 700, width = 11, height = 6)
+```
+
