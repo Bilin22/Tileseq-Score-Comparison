@@ -10,7 +10,6 @@ library(ggplot2)
 library(dplyr)
 library(stringr)
 library(ggpubr)
-library(viridis)
 library(tidyr)
 library(patchwork)
 
