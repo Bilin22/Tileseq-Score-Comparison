@@ -1,0 +1,93 @@
+{
+ "project": "SUMO1 tileseq",
+"template": {
+ "geneName": "SUMO1",
+"seq": "GTCTTGCTATCAAGTATAAATAGACCTGCAATTATTAATCTTTTGTTTCCTCGTCATTGTTCTCGTTCCCTTTCTTCCTTGTTTCTTTTTCTGCACAATATTTCAAGCTATACCAAGCATACAATCAACTCCAAGCTTGAAGCAAGCCTCCTGAAAGACAAGTTTGTACAAAAAAGTTGGCATGTCTGACCAGGAGGCAAAACCTTCAACTGAGGACTTGGGGGATAAGAAGGAAGGTGAATATATTAAACTCAAAGTCATTGGACAGGATAGCAGTGAGATTCACTTCAAAGTGAAAATGACAACACATCTCAAGAAACTCAAAGAATCATACTGTCAAAGACAGGGTGTTCCAATGAATTCACTCAGGTTTCTCTTTGAGGGTCAGAGAATTGCTGATAATCATACTCCAAAAGAACTGGGAATGGAGGAAGAAGATGTGATTGAAGTTTATCAGGAACAAACGGGGGGTTAGTACCCAACTTTCTTGTACAAAGTGGTTTGATGGCCGCTAAGTAAGTAAGACGTCGAGCTCTAAGTAAGTAACGGCCGCCACCGCGGTGGAGCTTTGGACTTCTTCGCCAGAGGTTTGGTCAAGTCTCCAATCAAGGTTGTCGGCTTGTCTACCTTGCCAGAAATTTACGAAAAGATGGAAAAGGGTCAAATCGTTGGTAGATACGTTGTTGACACTTCTAAATAAGCGAATTTCTTATGATTTATGATTTTTATTATTAAATAAGTTATAAAAAAAATAAGTGTATACAAATTTTAAAGTGACTCTTAGGTTTTAAAACGAAAATTCTTATTCTTGAGTAACTCTTTCCTGTAGGTCAGGTTGCTTTCTCAGGTATAGCATGAGGTCGCTCTTATTGACCACACCTCTACCGGCATGCCGAGCAAATGCCTGCAAATCGCTCCCCATTTCACCCAATTGTAGATATGCTAACTCCAGCAATGAGTTGAT",
+"cds_start": 182,
+"cds_end": 475,
+"uniprot": "P63165" 
+},
+"assay": {
+ "name": "Yeast complementation",
+"selection": "Positive" 
+},
+"conditions": {
+ "names": [ "nonselect", "select", "wtCtrl" ],
+"definitions": [ {
+ "Condition 1": "select",
+"Relationship": "is_selection_for",
+"Condition 2": "nonselect" 
+},
+{
+ "Condition 1": "wtCtrl",
+"Relationship": "is_wt_control_for",
+"Condition 2": "select" 
+},
+{
+ "Condition 1": "wtCtrl",
+"Relationship": "is_wt_control_for",
+"Condition 2": "nonselect" 
+} ] 
+},
+"numReplicates": {
+ "nonselect": 2,
+"select": 2,
+"wtCtrl": 2 
+},
+"numTimepoints": {
+ "nonselect": 1,
+"select": 1,
+"wtCtrl": 1 
+},
+"regions": {
+ "Region Number": [ 1 ],
+"Start AA": [ 2 ],
+"End AA": [ 97 ] 
+},
+"tiles": [ {
+   "Tile Number": 1,
+  "Start AA": 2,
+  "End AA": 34 
+  },
+{
+   "Tile Number": 2,
+  "Start AA": 35,
+  "End AA": 68 
+  },
+{
+   "Tile Number": 3,
+  "Start AA": 69,
+  "End AA": 97 
+  } ],
+"timepoints": {
+ "Time point name": [ "1" ],
+"Time": [        0 ],
+"Unit": [ "h" ] 
+},
+"samples": {
+ "Sample ID": [ "18", "19", "20", "30", "31", "32", "33", "34", "35", "45", "46", "47", "81", "82", "83", "93", "94", "95" ],
+"Tile ID": [ 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3 ],
+"Condition": [ "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "select", "select", "select", "select", "select", "select", "wtCtrl", "wtCtrl", "wtCtrl", "wtCtrl", "wtCtrl", "wtCtrl" ],
+"Time point": [ "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" ],
+"Replicate": [ 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2 ] 
+},
+"varcaller": {
+ "posteriorThreshold":      0.5,
+"minCover":      0.4,
+"mutRate":   0.0025,
+"maxDrop":      0.2 
+},
+"scoring": {
+ "countThreshold": 10,
+"pseudo.n": 8,
+"sdThreshold":      0.3,
+"wtQuantile":      0.9,
+"cvDeviation":       10,
+"lastFuncPos": "Inf",
+"lpdCutoff":        1 
+},
+"pivots": {
+ "Region": [  ],
+"Value": [  ] 
+} 
+}

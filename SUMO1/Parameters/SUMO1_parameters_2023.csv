@@ -1,0 +1,79 @@
+Project name:,SUMO1 tileseq,,,
+,,,,
+Template construct,,,,
+Gene name:,SUMO1,,,
+Sequence:,GTCTTGCTATCAAGTATAAATAGACCTGCAATTATTAATCTTTTGTTTCCTCGTCATTGTTCTCGTTCCCTTTCTTCCTTGTTTCTTTTTCTGCACAATATTTCAAGCTATACCAAGCATACAATCAACTCCAAGCTTGAAGCAAGCCTCCTGAAAGACAAGTTTGTACAAAAAAGTTGGCATGTCTGACCAGGAGGCAAAACCTTCAACTGAGGACTTGGGGGATAAGAAGGAAGGTGAATATATTAAACTCAAAGTCATTGGACAGGATAGCAGTGAGATTCACTTCAAAGTGAAAATGACAACACATCTCAAGAAACTCAAAGAATCATACTGTCAAAGACAGGGTGTTCCAATGAATTCACTCAGGTTTCTCTTTGAGGGTCAGAGAATTGCTGATAATCATACTCCAAAAGAACTGGGAATGGAGGAAGAAGATGTGATTGAAGTTTATCAGGAACAAACGGGGGGTTAGTACCCAACTTTCTTGTACAAAGTGGTTTGATGGCCGCTAAGTAAGTAAGACGTCGAGCTCTAAGTAAGTAACGGCCGCCACCGCGGTGGAGCTTTGGACTTCTTCGCCAGAGGTTTGGTCAAGTCTCCAATCAAGGTTGTCGGCTTGTCTACCTTGCCAGAAATTTACGAAAAGATGGAAAAGGGTCAAATCGTTGGTAGATACGTTGTTGACACTTCTAAATAAGCGAATTTCTTATGATTTATGATTTTTATTATTAAATAAGTTATAAAAAAAATAAGTGTATACAAATTTTAAAGTGACTCTTAGGTTTTAAAACGAAAATTCTTATTCTTGAGTAACTCTTTCCTGTAGGTCAGGTTGCTTTCTCAGGTATAGCATGAGGTCGCTCTTATTGACCACACCTCTACCGGCATGCCGAGCAAATGCCTGCAAATCGCTCCCCATTTCACCCAATTGTAGATATGCTAACTCCAGCAATGAGTTGAT,,,
+CDS start:,182,,,
+CDS end:,475,,,
+Uniprot Accession:,P63165,,,
+,,,,
+Assay Type:,,,,
+Assay Name:,Yeast complementation,,,
+Assay Description:,Positive,,,
+Negative selection?,No,,,
+,,,,
+,,,,
+Conditions and replicates,,,,
+Condition IDs:,nonselect,select,wtCtrl,
+Descriptions:,,,,
+Number of Replicates:,2,2,2,
+Number of time points:,1,1,1,
+,,,,
+Mutagenesis Regions,,,,
+Region Number,Start AA,End AA,,
+1,2,97,,
+,,,,
+Sequencing Tiles,,,,
+Tile Number,Start AA,End AA,,
+1,2,34,,
+2,35,68,,
+3,69,97,,
+,,,,
+Condition definitions,,,,
+Condition 1,Relationship,Condition 2,,
+select,is_selection_for,nonselect,,
+wtCtrl,is_wt_control_for,select,,
+wtCtrl,is_wt_control_for,nonselect,,
+,,,,
+Time point definitions,,,,
+Time point name,Time,Unit,,
+1,0,h,,
+,,,,
+Sequencing samples,,,,
+Sample ID,Tile ID,Condition,Time point,Replicate
+18,1,nonselect,1,1
+19,2,nonselect,1,1
+20,3,nonselect,1,1
+30,1,nonselect,1,2
+31,2,nonselect,1,2
+32,3,nonselect,1,2
+33,1,select,1,1
+34,2,select,1,1
+35,3,select,1,1
+45,1,select,1,2
+46,2,select,1,2
+47,3,select,1,2
+81,1,wtCtrl,1,1
+82,2,wtCtrl,1,1
+83,3,wtCtrl,1,1
+93,1,wtCtrl,1,2
+94,2,wtCtrl,1,2
+95,3,wtCtrl,1,2
+,,,,
+Variant calling parameters,,,,
+Posterior threshold:,0.5,,,
+Minimum coverage:,0.4,,,
+Per-base mutation rate:,0.0025,,,
+Maximum depth drop:,0.2,,,
+,,,,
+Scoring function parameters,,,,
+Minimum read count:,10,,,
+WT filter quantile:,0.9,,,
+Pseudo-replicates:,8,,,
+SD threshold:,0.3,,,
+Replicate disagreement factor:,10,,,
+Last functional AA position:,Inf,,,
+Maximum logPhi SD:,1,,,
+,,,,
+Score scaling pivots,,,,
+Condition,Time point,Region,Type,Value
