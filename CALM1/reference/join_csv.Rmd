@@ -1,0 +1,23 @@
+---
+title: "join"
+author: "Bilin"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r}
+library(dplyr)
+library(plyr)
+```
+
+```{r}
+joined_data <- ldply(list.files("/Users/admin/Desktop/CALM1_2023-05-11-15-23-43/reference/sets", pattern = "*.csv", full.names = TRUE), read.csv, header=TRUE)
+
+cleaned_join_data <- distinct(joined_data, hgvsp, .keep_all = TRUE)
+
+write.csv(cleaned_join_data, file = "/Users/admin/Desktop/CALM1_2023-05-11-15-23-43/reference/combined_reference.csv")
+
+```
+
+
+
