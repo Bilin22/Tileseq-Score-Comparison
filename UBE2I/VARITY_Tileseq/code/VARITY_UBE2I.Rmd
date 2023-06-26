@@ -24,76 +24,82 @@ aa <- list("A" = "Ala", "R" = "Arg", "N" = "Asn", "D" = "Asp", "C" = "Cys",
 ```{r}
 new <- read.csv(file = "../data/select_t1_simple_aa.csv", skip = 16) %>% 
   select(hgvs_pro, score, se) %>% 
-  mutate(last3=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>% 
-  group_by(last3) %>% 
-  mutate(group = ifelse(grepl("=", last3), "synonymous", ifelse(grepl("Ter$", last3), "nonsense", "missense"))) %>% 
-  filter(group == 'missense')
+  mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
+  mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
+  mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
+                                                            "nonsense", "missense"))) %>%
+  mutate(hgvs_pro = ifelse(grepl("=$", hgvs_pro), paste(substr(hgvs_pro, 1, 5), substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), substr(hgvs_pro,3, 5), sep = ''), hgvs_pro))
 ```
 
 ```{r}
 VARITY_R <- read.csv(file = "../data/UBE2I[P63279]_1-158_VARITY_ER_20230605191253505421.csv") %>% 
   select(aa_pos, aa_ref, aa_alt, VARITY_R) %>% 
   drop_na() %>% 
-  mutate(hgvs_pro = paste("p.", aa[aa_ref], aa_pos, aa[aa_alt], sep = ''))
+  mutate(hgvs_pro = paste("p.", aa[aa_ref], aa_pos, aa[aa_alt], sep = '')) %>% 
+  distinct()
 ```
+
 
 ```{r}
 match_df <- left_join(new, VARITY_R, join_by("hgvs_pro")) %>% 
   drop_na() %>% 
   rename(fitness.score=score, LOD.for.pathogenicity=VARITY_R) %>% 
-  mutate(wildtype = substr(hgvs_pro, 3, 5))
+  select(hgvs_pro, fitness.score, LOD.for.pathogenicity, se, wt, mut, type)
+
+# type -- missense mutation
 ```
 
 ```{r}
 new_facet <- ggplot(match_df, aes(x = fitness.score, y = LOD.for.pathogenicity)) + 
-  geom_point(aes(color=wildtype, alpha = 0.9)) +
-  facet_wrap(~ wildtype, scales = "fixed") +
-  geom_smooth(method = "lm", aes(color = wildtype))+
+  geom_point(aes(color=wt, alpha = 0.9)) +
+  facet_wrap(~ wt, scales = "fixed") +
+  # geom_smooth(method = "lm", aes(color = wildtype))+
   stat_cor(method= "spearman", label.x = -0.3, label.y = 0.35, cor.coef.name = "rho", aes(label = ..r.label..)) +
-  geom_rug(aes(color=wildtype)) +
+  geom_rug(aes(color=wt)) +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45), legend.position = "none")
 
-# ggsave(filename = "/Users/admin/Desktop/UBE2I/VARITY_Tileseq/output/facet_plot.jpg", dpi = 600)
+# ggsave(filename = "../output/new_VARITY_facet.jpg", dpi = 600)
 ```
 
 ```{r}
 new_whole <- ggplot(match_df, aes(x = fitness.score, y = LOD.for.pathogenicity)) + 
-  geom_point(aes(color=wildtype, alpha=0.9)) +
-  geom_smooth(method = "lm") +
+  geom_point(aes(color=wt, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
   stat_cor(method= "spearman", label.x = -0.2, label.y = 0.3, cor.coef.name = "rho",aes(label = ..r.label..)) +
-  geom_rug(aes(color=wildtype))+
+  geom_rug(aes(color=wt))+
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm"))
 
-# ggsave(filename = "/Users/admin/Desktop/UBE2I/VARITY_Tileseq/output/plot.jpg", dpi = 600)
+new_facet + new_whole
+# ggsave(filename = "../output/new_VARITY_combined.jpg", dpi = 600, width = 14, height = 7)
 ```
 
 ```{r}
 old <- read.csv(file = "../data/urn_mavedb_00000001-a-3_scores.csv") %>% 
   select(hgvs_pro, score, se) %>% 
-  distinct() %>% 
-  mutate(last3=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>% 
-  group_by(last3) %>% 
-  mutate(group = ifelse(grepl("=", last3), "synonymous", ifelse(grepl("Ter$", last3), "nonsense", "missense"))) %>% 
-  filter(group == "missense")
+  mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
+  mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
+  mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
+                                                            "nonsense", "missense"))) %>%
+  mutate(hgvs_pro = ifelse(grepl("=$", hgvs_pro), paste(substr(hgvs_pro, 1, 5), substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), substr(hgvs_pro,3, 5), sep = ''), hgvs_pro)) %>% distinct()
 ```
 
 ```{r}
 match_old <- left_join(old, VARITY_R, join_by("hgvs_pro")) %>% 
   rename(fitness.score=score, LOD.for.pathogenicity=VARITY_R) %>% 
-  mutate(wildtype=substr(hgvs_pro, 3, 5)) %>% 
-  drop_na()
+  drop_na() %>% 
+  select(hgvs_pro, fitness.score, LOD.for.pathogenicity, se, wt, mut, type)
 ```
 
 ```{r}
 old_facet <- ggplot(match_old, aes(x = fitness.score, y = LOD.for.pathogenicity)) + 
-  geom_point(aes(color=wildtype, alpha = 0.9)) +
-  facet_wrap(~ wildtype, scales = "fixed") +
-  geom_smooth(method = "lm", aes(color = wildtype))+
+  geom_point(aes(color=wt, alpha = 0.9)) +
+  facet_wrap(~ wt, scales = "fixed") +
+  # geom_smooth(method = "lm", aes(color = wildtype))+
   stat_cor(method= "spearman", label.x = -0.3, label.y = 0.35, cor.coef.name = "rho", aes(label = ..r.label..)) +
-  geom_rug(aes(color=wildtype)) +
+  geom_rug(aes(color=wt)) +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45), legend.position = "none")
 
@@ -102,19 +108,15 @@ old_facet <- ggplot(match_old, aes(x = fitness.score, y = LOD.for.pathogenicity)
 
 ```{r}
 old_whole <- ggplot(match_old, aes(x = fitness.score, y = LOD.for.pathogenicity)) + 
-  geom_point(aes(color=wildtype, alpha=0.9)) +
-  geom_smooth(method = "lm") +
-  stat_cor(method= "spearman", label.x = -0.2, label.y = 0.3, cor.coef.name = "rho",aes(label = ..r.label..)) +
-  geom_rug(aes(color=wildtype))+
+  geom_point(aes(color=wt, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
+  stat_cor(method= "spearman", label.x = 2, label.y = 0.3, cor.coef.name = "rho",aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm"))
 
-# ggsave(filename = "/Users/admin/Desktop/UBE2I/VARITY_Tileseq/output/plot_old.jpg", dpi = 600)
-```
-
-```{r}
-old_facet + old_whole + new_facet + new_whole
-# ggsave(filename = "../output/VARITY_new_old.jpg", dpi = 600, width = 12, height = 12)
+old_facet + old_whole
+# ggsave(filename = "../output/old_VARITY_combined.jpg", dpi = 600, width = 15, height = 8)
 ```
 
