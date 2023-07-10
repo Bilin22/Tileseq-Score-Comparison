@@ -11,7 +11,7 @@ library(stringr)
 library(ggpubr)
 library(tidyr)
 library(patchwork)
-# library(plotly)
+
 ```
 
 
@@ -30,7 +30,7 @@ map_2023 <- read.csv(file = "../data/select_t1_simple_aa.csv", skip = 16) %>%
   mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
   mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
   mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
-                                                            "nonsense", "missense"))) %>%
+                                                    "nonsense", "missense"))) %>%
   mutate(hgvs_pro = ifelse(grepl("=$", hgvs_pro), paste(substr(hgvs_pro, 1, 5), substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), substr(hgvs_pro,3, 5), sep = ''), hgvs_pro))
 # match the formatting of the new df with the mavedb old version.
 ```
