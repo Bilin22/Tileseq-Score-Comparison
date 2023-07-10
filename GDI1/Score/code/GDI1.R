@@ -87,5 +87,8 @@ aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) +
 ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
        dpi = 700, width = 10, height = 8)
 
-
- 
+# try convert old score file to mave db format
+map_db_2021 <- read.csv("GDI1/Score/data/score2021.csv") %>% 
+  rename("hgvs_pro" = hgvsp) %>% 
+  select(hgvs_pro, score, sd, se)
+write.csv(map_db_2021, "GDI1/Score/data/score_db_2021.csv", row.names = FALSE)
