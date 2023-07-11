@@ -1,6 +1,6 @@
 # Tileseq-Score-Comparison
 
-![separation](https://github.com/Bilin22/Tileseq-Score-Comparison/blob/main/SUMO1/SUMO1_2023-05-09-16-17-21_QC/separation.png)
+![separation](https://github.com/Bilin22/Tileseq-Score-Comparison/blob/main/SUMO1/SUMO1_2023-05-09-16-17-21_scores/mavevis_SUMO1.png)
 
 This [BCB330](https://artsci.calendar.utoronto.ca/course/bcb330y1) project aims to re-evaluate the performance of variant effect maps based on different versions of MAVE pipelines
 with respect to precision and sensitivity on reliable benchmarks.
