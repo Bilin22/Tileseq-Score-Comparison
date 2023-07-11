@@ -14,7 +14,7 @@ The detailed goals include:
 3. Compare the predictions made by different versions of variant effect maps using the benchmark sets and use them to infer evidence strength for clinical interpretation.
 4. Provide recommendations for optimizing the implementation of MAVEs based on the evaluation result.
 
-Here's the list of genes we re-processed:
+**Here's the list of genes we re-processed:**
 * Calmodulin 1: [CALM1](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/CALM1)
 * GDP Dissociation Inhibitor 1: [GDI1](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/GDI1)
 * Small Ubiquitin Like Modifier 1: [SUMO1](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/SUMO1)
