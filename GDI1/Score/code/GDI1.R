@@ -33,17 +33,18 @@ match_df <- merge(map_2023, map_2021, by = "hgvs_pro") %>%
 
 # boxplot for se
 se.2023 <- ggplot(match_df, aes(x = type, y = se.2023)) + 
-  geom_boxplot(varwidth = TRUE, alpha = 0.8) +
+  geom_boxplot(varwidth = TRUE, alpha = 0.8, aes(color = type)) +
   theme_light() +
   labs(x = "mutation type", y = "standard error (2023)") +
   theme(
     panel.grid.major.x = element_blank(),
     panel.border = element_blank(),
     axis.ticks.x = element_blank()
-  )
+  ) 
+
 
 se.2021 <- ggplot(match_df, aes(x = type, y = se.2021)) + 
-  geom_boxplot(varwidth = TRUE, alpha = 0.8) +
+  geom_boxplot(varwidth = TRUE, alpha = 0.8, aes(color = type)) +
   theme_light() +
   labs(x = "mutation type", y = "standard error (2021)") +
   theme(
@@ -53,7 +54,7 @@ se.2021 <- ggplot(match_df, aes(x = type, y = se.2021)) +
   )
 
 se.boxplot <- se.2021 + se.2023
-ggsave(file = "../Tileseq_Scores/GDI1/Score/output/se_boxplot.png", 
+ggsave(file = "../Tileseq_Scores/GDI1/Score/output/se_boxplot.png",
        dpi = 700, width = 9, height = 7)
 
 
@@ -69,8 +70,8 @@ combined_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) +
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm")) 
-ggsave(file = "../Tileseq_Scores/GDI1/Score/output/score_scatter.png",
-       dpi = 700, width = 8, height = 6)
+# ggsave(file = "../Tileseq_Scores/GDI1/Score/output/score_scatter.png",
+#        dpi = 700, width = 8, height = 6)
 
 
 # sep by aa
@@ -84,11 +85,11 @@ aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) +
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm"))
-ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
-       dpi = 700, width = 10, height = 8)
+# ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
+#        dpi = 700, width = 10, height = 8)
 
 # try convert old score file to mave db format
 map_db_2021 <- read.csv("GDI1/Score/data/score2021.csv") %>% 
   rename("hgvs_pro" = hgvsp) %>% 
   select(hgvs_pro, score, sd, se)
-write.csv(map_db_2021, "GDI1/Score/data/score_db_2021.csv", row.names = FALSE)
+# write.csv(map_db_2021, "GDI1/Score/data/score_db_2021.csv", row.names = FALSE)
