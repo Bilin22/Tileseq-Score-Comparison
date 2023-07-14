@@ -34,50 +34,53 @@ match_df <- merge(map_2023, map_2021, by = "hgvs_pro") %>%
 # boxplot for se
 se.2023 <- ggplot(match_df, aes(x = type, y = se.2023)) + 
   geom_boxplot(varwidth = TRUE, alpha = 0.8, aes(color = type)) +
-  theme_light() +
-  labs(x = "mutation type", y = "standard error (2023)") +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.border = element_blank(),
-    axis.ticks.x = element_blank()
-  ) 
+  theme_bw() +
+  scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
+  labs(x = "mutation type", y = "standard error (2023)")
 
 
 se.2021 <- ggplot(match_df, aes(x = type, y = se.2021)) + 
   geom_boxplot(varwidth = TRUE, alpha = 0.8, aes(color = type)) +
-  theme_light() +
-  labs(x = "mutation type", y = "standard error (2021)") +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.border = element_blank(),
-    axis.ticks.x = element_blank()
-  )
+  theme_bw() +
+  scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
+  labs(x = "mutation type", y = "standard error (2021)")
+  
 
-se.boxplot <- se.2021 + se.2023
-ggsave(file = "../Tileseq_Scores/GDI1/Score/output/se_boxplot.png",
-       dpi = 700, width = 9, height = 7)
+se.boxplot <- se.2021 + se.2023 + plot_layout(guides = "collect")
+# ggsave(file = "../Tileseq_Scores/GDI1/Score/output/se_boxplot.png",
+#        dpi = 700, width = 8, height = 5)
 
 
 # scatter plot for scores, sep by mutation type
 combined_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
   geom_point(aes(color=type, alpha=0.9)) +
-  geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 8) +
-  # geom_smooth(method = "lm") +
-  # stat_cor(method= "spearman", label.x = 2.5, label.y = -2, cor.coef.name = "rho",aes(after_stat(r.label))) +
-  geom_rug(aes(color=type))+
-  stat_cor(method = "spearman", cor.coef.name = c("rho", "R")) +
+  geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 7) +
   facet_wrap(~ type) +
+  scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
+  stat_cor(method = "spearman", cor.coef.name = c("rho", "R")) +
   theme_bw()+
   theme(legend.position = "bottom") +
-  theme(legend.key.size = unit(0.5, "cm")) 
+  theme(legend.key.size = unit(0.5, "cm"))
 # ggsave(file = "../Tileseq_Scores/GDI1/Score/output/score_scatter.png",
 #        dpi = 700, width = 8, height = 6)
 
 
+# combined scatter plot (sep by mutation types)
+overall_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
+  geom_point(aes(color=type, alpha=0.9)) +
+  stat_cor(method = "spearman", cor.coef.name = c("rho", "R")) +
+  theme_bw()+
+  theme(legend.position = "bottom") +
+  theme(legend.key.size = unit(0.5, "cm")) +
+  scale_color_manual(values = c("grey59", "red2", "chartreuse3"))
+# ggsave(file = "../Tileseq_Scores/GDI1/Score/output/overall_scatter.png",
+#        dpi = 700, width = 7, height = 6)
+
 # sep by aa
 aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
-  geom_point(aes(color=wt)) +
+  geom_point(aes(color=type, alpha = 0.9)) +
   geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 8) +
+  scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
   # geom_smooth(method = "lm") +
   # stat_cor(method= "spearman", label.x = 2.5, label.y = -2, cor.coef.name = "rho",aes(after_stat(r.label))) +
   # geom_rug(aes(color=wt))+
@@ -85,8 +88,8 @@ aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) +
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm"))
-# ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
-#        dpi = 700, width = 10, height = 8)
+ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
+       dpi = 700, width = 10, height = 8)
 
 # try convert old score file to mave db format
 map_db_2021 <- read.csv("GDI1/Score/data/score2021.csv") %>% 

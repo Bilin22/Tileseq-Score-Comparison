@@ -44,6 +44,14 @@ matched_df <- merge(df_new, df_old, by = "hgvs_pro") %>%
 
 ```
 
+```{r}
+# plot out the se for both map
+
+```
+
+
+
+
 
 ```{r}
 new_old_combined <- ggplot(matched_df, aes(x = new.score, y = old.score)) + 
@@ -51,6 +59,8 @@ new_old_combined <- ggplot(matched_df, aes(x = new.score, y = old.score)) +
   # geom_smooth(method = "lm") +
   stat_cor(method= "spearman", label.x = -0.5, label.y = 1, cor.coef.name = "rho",aes(label = ..r.label..)) +
   geom_rug(aes(color=type))+
+  xlab("score.2023") +
+  ylab("score.2018") +
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm")) 
