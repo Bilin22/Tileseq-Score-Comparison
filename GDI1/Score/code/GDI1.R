@@ -82,14 +82,14 @@ aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) +
   geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 8) +
   scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
   # geom_smooth(method = "lm") +
-  # stat_cor(method= "spearman", label.x = 2.5, label.y = -2, cor.coef.name = "rho",aes(after_stat(r.label))) +
+  stat_cor(method = "spearman", cor.coef.name = c("rho", "R"), text_size = 0.005, p.label = FALSE) +
   # geom_rug(aes(color=wt))+
   facet_wrap(~ wt) +
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm"))
-ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
-       dpi = 700, width = 10, height = 8)
+# ggsave(file = "../Tileseq_Scores/GDI1/Score/output/aa_scatter.png",
+#        dpi = 700, width = 10, height = 8)
 
 # try convert old score file to mave db format
 map_db_2021 <- read.csv("GDI1/Score/data/score2021.csv") %>% 
