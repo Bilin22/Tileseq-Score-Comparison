@@ -29,7 +29,7 @@ match_df <- merge(map_2023, map_2021, by = "hgvs_pro") %>%
   rename(score.2023 = score.x, se.2023 = se.x, score.2021 = score.y, se.2021 = se.y, 
          mut = mut.x, wt = wt.x, type = type.x) %>% 
   select(hgvs_pro, score.2023, se.2023, score.2021, se.2021, wt, mut, type) %>% 
-  mutate(plotname = ifelse(abs(score.2023 - score.2021 >= 0.4), hgvs_pro, ""))
+  mutate(plotname = ifelse(abs(score.2023 - score.2021) >= 0.4, hgvs_pro, ""))
 
 # boxplot for se
 se.2023 <- ggplot(match_df, aes(x = type, y = se.2023)) + 
