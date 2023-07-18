@@ -79,10 +79,10 @@ overall_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) +
 # sep by aa
 aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2021)) + 
   geom_point(aes(color=type, alpha = 0.9)) +
-  geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 8) +
+  geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 5) +
   scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
   # geom_smooth(method = "lm") +
-  stat_cor(method = "spearman", cor.coef.name = c("rho", "R"), text_size = 0.005, p.label = FALSE) +
+  # stat_cor(method = "spearman", cor.coef.name = c("rho", "R"), text_size = 0.005, p.label = FALSE) +
   # geom_rug(aes(color=wt))+
   facet_wrap(~ wt) +
   theme_bw()+
