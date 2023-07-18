@@ -79,7 +79,7 @@ overall_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2019)) +
 # sep by aa
 aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2019)) + 
   geom_point(aes(color=type, alpha = 0.9)) +
-  geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 8) +
+  geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 7) +
   scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
   # geom_smooth(method = "lm") +
   stat_cor(method = "spearman", cor.coef.name = c("rho", "R")) +
@@ -88,7 +88,7 @@ aa_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2019)) +
   theme_bw()+
   theme(legend.position = "bottom") +
   theme(legend.key.size = unit(0.5, "cm"))
-ggsave(file = "../Tileseq_Scores/SUMO1/Score_comparison/output/comparison_aa.png",
-       dpi = 700, width = 10, height = 8)
+# ggsave(file = "../Tileseq_Scores/SUMO1/Score_comparison/output/comparison_aa.png",
+#        dpi = 700, width = 10, height = 8)
 
 
