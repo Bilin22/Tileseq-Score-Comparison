@@ -28,7 +28,7 @@ match_df <- merge(map_2023, map_2019, by = "hgvs_pro") %>%
   rename(score.2023 = score.x, se.2023 = se.x, score.2019 = score.y, se.2019 = se.y, 
          mut = mut.x, wt = wt.x, type = type.x) %>% 
   select(hgvs_pro, score.2023, se.2023, score.2019, se.2019, wt, mut, type) %>% 
-  mutate(plotname = ifelse(abs(score.2023 - score.2019 >= 0.4), hgvs_pro, "")) 
+  mutate(plotname = ifelse(abs(score.2023 - score.2019) >= 0.4, hgvs_pro, "")) 
 # we label some pts if two scores disagree with each other by more than 0.4
 
 # boxplot for se
