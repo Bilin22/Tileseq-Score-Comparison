@@ -87,7 +87,10 @@
 "lpdCutoff":        1 
 },
 "pivots": {
- "Region": [  ],
-"Value": [  ] 
+"Condition": ["select", "select"],
+"Time point": ["1", "1"],
+"Region": [ 1,  1],
+"Type": ["synonymous", "nonsense"],
+"Value": [-0.018, -1.220] 
 } 
 }
