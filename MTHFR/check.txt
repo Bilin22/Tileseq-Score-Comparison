@@ -1,0 +1,912 @@
+Running on galen2
+Sample 1123133 OK
+
+Running on galen3
+Sample 1123134 failed: 936497 lines in R1; 963955 lines in R2
+
+Running on galen4
+Sample 1123135 failed: 1138534 lines in R1; 1172614 lines in R2
+
+Running on galen1
+Sample 1123136 failed: 874081 lines in R1; 1459514 lines in R2
+
+Running on galen2
+Sample 1123137 failed: 1008556 lines in R1; 1080036 lines in R2
+
+Running on galen3
+Sample 1123138 failed: 1062408 lines in R1; 1094202 lines in R2
+
+Running on galen4
+Sample 1123139 failed: 966612 lines in R1; 1005564 lines in R2
+
+Running on galen1
+Sample 1123140 failed: 856621 lines in R1; 1433774 lines in R2
+
+Running on galen2
+Sample 1123145 OK
+
+Running on galen3
+Sample 1123146 OK
+
+Running on galen4
+Sample 1123147 OK
+
+Running on galen1
+Sample 1123148 failed: 748943 lines in R1; 599327 lines in R2
+
+Running on galen2
+Sample 1123149 OK
+
+Running on galen3
+Sample 1123150 OK
+
+Running on galen4
+Sample 1123151 failed: 799638 lines in R1; 769691 lines in R2
+
+Running on galen1
+Sample 1123152 OK
+
+Running on galen2
+Sample 1123169 OK
+
+Running on galen3
+Sample 1123170 OK
+
+Running on galen4
+Sample 1123172 OK
+
+Running on galen1
+Sample 1123173 OK
+
+Running on galen2
+Sample 1123174 OK
+
+Running on galen3
+Sample 1123181 OK
+
+Running on galen4
+Sample 1123182 OK
+
+Running on galen1
+Sample 1123184 OK
+
+Running on galen2
+Sample 312013 failed: 1897414 lines in R1; 1971984 lines in R2
+
+Running on galen3
+Sample 312014 OK
+
+Running on galen4
+Sample 312015 failed: 2476273 lines in R1; 2503519 lines in R2
+
+Running on galen1
+Sample 312016 failed: 2916202 lines in R1; 3368594 lines in R2
+
+Running on galen2
+Sample 312017 failed: 2429497 lines in R1; 2578672 lines in R2
+
+Running on galen3
+Sample 312018 failed: 1733474 lines in R1; 1818191 lines in R2
+
+Running on galen4
+Sample 312019 failed: 1922345 lines in R1; 1968381 lines in R2
+
+Running on galen1
+Sample 312020 failed: 2142517 lines in R1; 2178996 lines in R2
+
+Running on galen2
+Sample 312021 failed: 1896202 lines in R1; 2046413 lines in R2
+
+Running on galen3
+Sample 312022 failed: 2721480 lines in R1; 2744777 lines in R2
+
+Running on galen4
+Sample 312023 failed: 2461515 lines in R1; 2517317 lines in R2
+
+Running on galen1
+Sample 312024 failed: 2355202 lines in R1; 2676058 lines in R2
+
+Running on galen2
+Sample 312025 failed: 1988699 lines in R1; 2088283 lines in R2
+
+Running on galen3
+Sample 312026 failed: 2112686 lines in R1; 2458725 lines in R2
+
+Running on galen4
+Sample 312027 failed: 2948743 lines in R1; 3172673 lines in R2
+
+Running on galen1
+Sample 312028 failed: 2821591 lines in R1; 3187972 lines in R2
+
+Running on galen2
+Sample 312029 failed: 3316041 lines in R1; 3374824 lines in R2
+
+Running on galen3
+Sample 312030 failed: 1982272 lines in R1; 2047916 lines in R2
+
+Running on galen4
+Sample 312031 failed: 3238780 lines in R1; 3329560 lines in R2
+
+Running on galen1
+Sample 312032 failed: 2660387 lines in R1; 3236034 lines in R2
+
+Running on galen2
+Sample 312033 failed: 1928035 lines in R1; 2183358 lines in R2
+
+Running on galen3
+Sample 312034 failed: 2023012 lines in R1; 2071881 lines in R2
+
+Running on galen4
+Sample 312035 OK
+
+Running on galen1
+Sample 312036 failed: 2870292 lines in R1; 3328603 lines in R2
+
+Running on galen2
+Sample 312037 failed: 2538982 lines in R1; 2600678 lines in R2
+
+Running on galen3
+Sample 312038 failed: 1935651 lines in R1; 2007033 lines in R2
+
+Running on galen4
+Sample 312039 failed: 2920304 lines in R1; 2948570 lines in R2
+
+Running on galen1
+Sample 312040 failed: 2901160 lines in R1; 3338334 lines in R2
+
+Running on galen2
+Sample 312041 failed: 3475445 lines in R1; 3889596 lines in R2
+
+Running on galen3
+Sample 312042 failed: 2097284 lines in R1; 2356997 lines in R2
+
+Running on galen4
+Sample 312073 failed: 1635370 lines in R1; 1803531 lines in R2
+
+Running on galen1
+Sample 312074 failed: 1243621 lines in R1; 1973364 lines in R2
+
+Running on galen2
+Sample 312075 failed: 2166526 lines in R1; 2375059 lines in R2
+
+Running on galen3
+Sample 312076 failed: 2793721 lines in R1; 3074856 lines in R2
+
+Running on galen4
+Sample 312077 failed: 2663425 lines in R1; 2882533 lines in R2
+
+Running on galen1
+Sample 312078 failed: 1619275 lines in R1; 2358129 lines in R2
+
+Running on galen2
+Sample 312079 failed: 1552273 lines in R1; 1849575 lines in R2
+
+Running on galen3
+Sample 312080 failed: 1637821 lines in R1; 1893288 lines in R2
+
+Running on galen4
+Sample 312081 failed: 3310867 lines in R1; 3415013 lines in R2
+
+Running on galen1
+Sample 312082 failed: 2566853 lines in R1; 3370948 lines in R2
+
+Running on galen2
+Sample 312083 failed: 1873563 lines in R1; 2288965 lines in R2
+
+Running on galen3
+Sample 312084 failed: 3391536 lines in R1; 3748920 lines in R2
+
+Running on galen4
+Sample 312085 failed: 1999951 lines in R1; 2466452 lines in R2
+
+Running on galen1
+Sample 312086 failed: 2025145 lines in R1; 3159229 lines in R2
+
+Running on galen2
+Sample 312087 failed: 2147511 lines in R1; 2535897 lines in R2
+
+Running on galen3
+Sample 312109 failed: 2012054 lines in R1; 2054010 lines in R2
+
+Running on galen4
+Sample 312110 OK
+
+Running on galen1
+Sample 312111 failed: 2018112 lines in R1; 2326872 lines in R2
+
+Running on galen2
+Sample 312112 failed: 2863172 lines in R1; 2965872 lines in R2
+
+Running on galen3
+Sample 312113 failed: 2529492 lines in R1; 2564621 lines in R2
+
+Running on galen4
+Sample 312114 failed: 1855751 lines in R1; 1942394 lines in R2
+
+Running on galen1
+Sample 312115 failed: 1488090 lines in R1; 1876012 lines in R2
+
+Running on galen2
+Sample 312116 failed: 1903603 lines in R1; 1932945 lines in R2
+
+Running on galen3
+Sample 312117 failed: 1759881 lines in R1; 1799608 lines in R2
+
+Running on galen4
+Sample 312118 failed: 2294905 lines in R1; 2311988 lines in R2
+
+Running on galen1
+Sample 312119 failed: 1978671 lines in R1; 2467328 lines in R2
+
+Running on galen2
+Sample 312120 failed: 2678902 lines in R1; 2820444 lines in R2
+
+Running on galen3
+Sample 312121 failed: 1820738 lines in R1; 1876572 lines in R2
+
+Running on galen4
+Sample 312122 failed: 1918794 lines in R1; 2307821 lines in R2
+
+Running on galen1
+Sample 312123 failed: 2762063 lines in R1; 3621159 lines in R2
+
+Running on galen2
+Sample 312124 failed: 2741099 lines in R1; 2889546 lines in R2
+
+Running on galen3
+Sample 312125 failed: 2121596 lines in R1; 2144769 lines in R2
+
+Running on galen4
+Sample 312126 failed: 3084482 lines in R1; 3141817 lines in R2
+
+Running on galen1
+Sample 312127 failed: 2823375 lines in R1; 3427326 lines in R2
+
+Running on galen2
+Sample 312128 failed: 2065336 lines in R1; 2237663 lines in R2
+
+Running on galen3
+Sample 312129 failed: 2416548 lines in R1; 2520034 lines in R2
+
+Running on galen4
+Sample 312130 failed: 2075500 lines in R1; 2123464 lines in R2
+
+Running on galen1
+Sample 312131 failed: 1741078 lines in R1; 1812501 lines in R2
+
+Running on galen2
+Sample 312132 failed: 1960100 lines in R1; 2051038 lines in R2
+
+Running on galen3
+Sample 312133 failed: 2300625 lines in R1; 2331933 lines in R2
+
+Running on galen4
+Sample 312134 failed: 2495812 lines in R1; 2560566 lines in R2
+
+Running on galen1
+Sample 312135 failed: 1679347 lines in R1; 2011972 lines in R2
+
+Running on galen2
+Sample 312136 failed: 1601965 lines in R1; 1779568 lines in R2
+
+Running on galen3
+Sample 312137 failed: 1762798 lines in R1; 2002710 lines in R2
+
+Running on galen4
+Sample 312138 failed: 3145772 lines in R1; 3382594 lines in R2
+
+Running on galen33
+Sample 312169 OK
+
+Running on galen1
+Sample 312170 failed: 1915767 lines in R1; 2111683 lines in R2
+
+Running on galen2
+Sample 312171 failed: 2026330 lines in R1; 2575203 lines in R2
+
+Running on galen3
+Sample 312172 failed: 1917698 lines in R1; 2223736 lines in R2
+
+Running on galen4
+Sample 312173 failed: 2321391 lines in R1; 2649592 lines in R2
+
+Running on galen33
+Sample 312174 OK
+
+Running on galen1
+Sample 312175 failed: 2022458 lines in R1; 2206040 lines in R2
+
+Running on galen2
+Sample 312176 failed: 2319183 lines in R1; 2708958 lines in R2
+
+Running on galen3
+Sample 312177 failed: 1658623 lines in R1; 1818438 lines in R2
+
+Running on galen4
+Sample 312178 failed: 1903842 lines in R1; 2134682 lines in R2
+
+Running on galen33
+Sample 312179 OK
+
+Running on galen1
+Sample 312180 failed: 1814179 lines in R1; 2078436 lines in R2
+
+Running on galen2
+Sample 312181 failed: 1811363 lines in R1; 1982628 lines in R2
+
+Running on galen3
+Sample 312182 OK
+
+Running on galen4
+Sample 312183 failed: 1639458 lines in R1; 1808075 lines in R2
+
+Running on galen33
+Sample 601037 OK
+
+Running on galen1
+Sample 601038 failed: 1091260 lines in R1; 1275371 lines in R2
+
+Running on galen2
+Sample 601039 OK
+
+Running on galen3
+Sample 601040 failed: 1895391 lines in R1; 2107309 lines in R2
+
+Running on galen4
+Sample 601041 failed: 1695355 lines in R1; 1860509 lines in R2
+
+Running on galen1
+Sample 601042 failed: 2163720 lines in R1; 2309170 lines in R2
+
+Running on galen2
+Sample 601044 failed: 1961109 lines in R1; 2125012 lines in R2
+
+Running on galen3
+Sample 601045 failed: 1535398 lines in R1; 1738017 lines in R2
+
+Running on galen4
+Sample 601049 failed: 3015503 lines in R1; 3058921 lines in R2
+
+Running on galen1
+Sample 601050 failed: 2218074 lines in R1; 2235708 lines in R2
+
+Running on galen2
+Sample 601051 failed: 2508677 lines in R1; 2654571 lines in R2
+
+Running on galen3
+Sample 601052 failed: 3256499 lines in R1; 3286929 lines in R2
+
+Running on galen4
+Sample 601053 failed: 2024233 lines in R1; 2048772 lines in R2
+
+Running on galen1
+Sample 601054 failed: 1836815 lines in R1; 1921243 lines in R2
+
+Running on galen2
+Sample 601055 failed: 1766841 lines in R1; 1834989 lines in R2
+
+Running on galen3
+Sample 601056 failed: 2171452 lines in R1; 2226161 lines in R2
+
+Running on galen4
+Sample 601057 failed: 2207768 lines in R1; 2248499 lines in R2
+
+Running on galen58
+Sample 601058 OK
+
+Running on galen59
+Sample 601059 OK
+
+Running on galen60
+Sample 601060 OK
+
+Running on galen61
+Sample 601061 OK
+
+Running on galen62
+Sample 601062 OK
+
+Running on galen63
+Sample 601063 OK
+
+Running on galen64
+Sample 601064 OK
+
+Running on galen65
+Sample 601065 OK
+
+Running on galen70
+Sample 601066 failed: 2304453 lines in R1; 2458440 lines in R2
+
+Running on galen73
+Sample 601067 OK
+
+Running on galen70
+Sample 601068 failed: 1755684 lines in R1; 1937044 lines in R2
+
+Running on galen71
+Sample 601069 OK
+
+Running on galen72
+Sample 601070 OK
+
+Running on galen73
+Sample 601071 OK
+
+Running on galen58
+Sample 601072 OK
+
+Running on galen59
+Sample 601073 OK
+
+Running on galen60
+Sample 601074 OK
+
+Running on galen61
+Sample 601075 OK
+
+Running on galen62
+Sample 601076 OK
+
+Running on galen63
+Sample 601077 OK
+
+Running on galen64
+Sample 601078 OK
+
+Running on galen65
+Sample 601079 OK
+
+Running on galen70
+Sample 601080 failed: 1803572 lines in R1; 1899615 lines in R2
+
+Running on galen71
+Sample 601081 OK
+
+Running on galen72
+Sample 601082 OK
+
+Running on galen73
+Sample 601083 OK
+
+Running on galen70
+Sample 601084 failed: 2289713 lines in R1; 2369809 lines in R2
+
+Running on galen71
+Sample 601085 OK
+
+Running on galen72
+Sample 601137 OK
+
+Running on galen73
+Sample 601138 OK
+
+Running on galen58
+Sample 601139 OK
+
+Running on galen59
+Sample 601140 OK
+
+Running on galen60
+Sample 601141 OK
+
+Running on galen61
+Sample 601142 OK
+
+Running on galen62
+Sample 601143 OK
+
+Running on galen63
+Sample 601144 OK
+
+Running on galen64
+Sample 601145 OK
+
+Running on galen65
+Sample 601146 OK
+
+Running on galen70
+Sample 601147 failed: 2263737 lines in R1; 2363253 lines in R2
+
+Running on galen71
+Sample 601148 OK
+
+Running on galen72
+Sample 601149 OK
+
+Running on galen73
+Sample 601150 OK
+
+Running on galen70
+Sample 601151 failed: 2935049 lines in R1; 3002290 lines in R2
+
+Running on galen71
+Sample 601152 OK
+
+Running on galen72
+Sample 601153 OK
+
+Running on galen73
+Sample 601154 OK
+
+Running on galen58
+Sample 601155 OK
+
+Running on galen59
+Sample 601156 OK
+
+Running on galen60
+Sample 601157 OK
+
+Running on galen61
+Sample 601158 OK
+
+Running on galen62
+Sample 601159 OK
+
+Running on galen63
+Sample 601160 OK
+
+Running on galen64
+Sample 601161 OK
+
+Running on galen65
+Sample 601162 OK
+
+Running on galen70
+Sample 601163 failed: 2436143 lines in R1; 2546955 lines in R2
+
+Running on galen71
+Sample 601164 OK
+
+Running on galen72
+Sample 601165 OK
+
+Running on galen73
+Sample 601166 OK
+
+Running on galen70
+Sample 601167 failed: 1996785 lines in R1; 2118893 lines in R2
+
+Running on galen71
+Sample 601168 OK
+
+Running on galen72
+Sample 601169 OK
+
+Running on galen73
+Sample 601170 OK
+
+Running on galen58
+Sample 601171 OK
+
+Running on galen59
+Sample 601172 OK
+
+Running on galen60
+Sample 601173 OK
+
+Running on galen61
+Sample 601174 OK
+
+Running on galen62
+Sample 601175 OK
+
+Running on galen63
+Sample 601176 OK
+
+Running on galen64
+Sample 601177 OK
+
+Running on galen65
+Sample 601178 OK
+
+Running on galen70
+Sample 601179 failed: 2128514 lines in R1; 2179140 lines in R2
+
+Running on galen71
+Sample 601180 OK
+
+Running on galen72
+Sample 601181 OK
+
+Running on galen73
+Sample 601182 OK
+
+Running on galen70
+Sample 601183 failed: 1861306 lines in R1; 2295665 lines in R2
+
+Running on galen71
+Sample 601184 OK
+
+Running on galen72
+Sample 601185 OK
+
+Running on galen73
+Sample 601186 OK
+
+Running on galen58
+Sample 604041 OK
+
+Running on galen59
+Sample 604042 OK
+
+Running on galen60
+Sample 604043 OK
+
+Running on galen61
+Sample 604044 OK
+
+Running on galen62
+Sample 604045 OK
+
+Running on galen63
+Sample 604046 OK
+
+Running on galen64
+Sample 604047 OK
+
+Running on galen65
+Sample 604048 OK
+
+Running on galen70
+Sample 604049 failed: 1933841 lines in R1; 1973736 lines in R2
+
+Running on galen71
+Sample 604050 OK
+
+Running on galen72
+Sample 604051 OK
+
+Running on galen73
+Sample 604052 OK
+
+Running on galen70
+Sample 604053 failed: 2682363 lines in R1; 2748602 lines in R2
+
+Running on galen71
+Sample 604054 OK
+
+Running on galen72
+Sample 604055 OK
+
+Running on galen73
+Sample 604056 OK
+
+Running on galen58
+Sample 604057 OK
+
+Running on galen59
+Sample 604058 OK
+
+Running on galen60
+Sample 604059 OK
+
+Running on galen61
+Sample 604060 OK
+
+Running on galen62
+Sample 604061 OK
+
+Running on galen63
+Sample 604062 OK
+
+Running on galen64
+Sample 604063 OK
+
+Running on galen65
+Sample 604064 OK
+
+Running on galen70
+Sample 604065 failed: 2527674 lines in R1; 2744275 lines in R2
+
+Running on galen71
+Sample 604066 OK
+
+Running on galen72
+Sample 604067 OK
+
+Running on galen73
+Sample 604068 OK
+
+Running on galen70
+Sample 604069 failed: 1909850 lines in R1; 2220196 lines in R2
+
+Running on galen71
+Sample 604070 OK
+
+Running on galen72
+Sample 604071 OK
+
+Running on galen73
+Sample 604072 OK
+
+Running on galen58
+Sample 604073 OK
+
+Running on galen59
+Sample 604074 OK
+
+Running on galen60
+Sample 604075 OK
+
+Running on galen61
+Sample 604076 OK
+
+Running on galen62
+Sample 604077 OK
+
+Running on galen63
+Sample 604078 OK
+
+Running on galen64
+Sample 604079 OK
+
+Running on galen65
+Sample 604080 OK
+
+Running on galen70
+Sample 604081 failed: 2102044 lines in R1; 2201646 lines in R2
+
+Running on galen71
+Sample 604082 OK
+
+Running on galen72
+Sample 604083 OK
+
+Running on galen73
+Sample 604084 OK
+
+Running on galen70
+Sample 604085 failed: 3394913 lines in R1; 3465867 lines in R2
+
+Running on galen71
+Sample 604086 OK
+
+Running on galen72
+Sample 604087 OK
+
+Running on galen73
+Sample 604088 OK
+
+Running on galen22
+Sample 604089 OK
+
+Running on galen23
+Sample 604090 OK
+
+Running on galen24
+Sample 604133 OK
+
+Running on galen25
+Sample 604134 OK
+
+Running on galen26
+Sample 604135 OK
+
+Running on galen27
+Sample 604136 OK
+
+Running on galen28
+Sample 604137 OK
+
+Running on galen29
+Sample 604138 OK
+
+Running on galen30
+Sample 604140 OK
+
+Running on galen31
+Sample 604141 OK
+
+Running on galen32
+Sample 604145 OK
+
+Running on galen58
+Sample 604146 OK
+
+Running on galen59
+Sample 604147 OK
+
+Running on galen60
+Sample 604148 OK
+
+Running on galen61
+Sample 604149 OK
+
+Running on galen62
+Sample 604150 OK
+
+Running on galen63
+Sample 604151 OK
+
+Running on galen64
+Sample 604152 OK
+
+Running on galen65
+Sample 604153 OK
+
+Running on galen70
+Sample 604154 failed: 2512528 lines in R1; 2723027 lines in R2
+
+Running on galen71
+Sample 604155 OK
+
+Running on galen72
+Sample 604156 OK
+
+Running on galen73
+Sample 604157 OK
+
+Running on galen70
+Sample 604158 failed: 1924970 lines in R1; 2005876 lines in R2
+
+Running on galen71
+Sample 604159 OK
+
+Running on galen72
+Sample 604160 OK
+
+Running on galen73
+Sample 604161 OK
+
+Running on galen22
+Sample 604162 OK
+
+Running on galen23
+Sample 604163 OK
+
+Running on galen24
+Sample 604164 OK
+
+Running on galen25
+Sample 604165 OK
+
+Running on galen26
+Sample 604166 OK
+
+Running on galen27
+Sample 604167 OK
+
+Running on galen28
+Sample 604168 OK
+
+Running on galen29
+Sample 604169 OK
+
+Running on galen30
+Sample 604170 OK
+
+Running on galen31
+Sample 604171 OK
+
+Running on galen32
+Sample 604172 OK
+
+Running on galen58
+Sample 604173 OK
+
+Running on galen59
+Sample 604174 OK
+
+Running on galen60
+Sample 604175 OK
+
+Running on galen61
+Sample 604176 OK
+
+Running on galen62
+Sample 604177 OK
+
+Running on galen63
+Sample 604178 OK
+
+Running on galen64
+Sample 604179 OK
+
+Running on galen65
+Sample 604180 OK
+
+Running on galen70
+Sample 604181 OK
+
