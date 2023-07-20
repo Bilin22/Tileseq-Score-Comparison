@@ -1,12 +1,7 @@
 library(ggplot2)
 library(dplyr)
-library(stringr)
-library(ggpubr)
-library(tidyr)
-library(patchwork)
-# library(ggrepel)
 
-# old match_df
+# old score
 map.2019 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/urn_mavedb_00000001-b-2_scores.csv") %>% 
   select(hgvs_pro, score, se) %>% 
   distinct() %>% 
@@ -17,7 +12,7 @@ map.2019 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/urn_mave
   mutate(position = ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
                            substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
 
-# new match_df, add a new column for amino acid position
+# new score
 map.2023 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/select_t1_simple_aa.csv", 
                      skip = 16) %>% 
   mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
@@ -34,12 +29,11 @@ match_df <- merge(map.2023, map.2019, by = "hgvs_pro") %>%
   select(hgvs_pro, score.2023, se.2023, score.2019, se.2019, wt, mut, type) %>% 
   mutate(plotname = ifelse(abs(score.2023 - score.2019) >= 0.4, hgvs_pro, "")) %>% 
   mutate(position = ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
-                           substr(hgvs_pro, 6, nchar(hgvs_pro) - 3))) %>% 
-  mutate(difference = abs(score.2023 - score.2019))
+                           substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
 
 # select 3 columns
 df <- match_df %>% 
-  select(hgvs_pro, score.2023, score.2019, position) %>% 
+  select(position, score.2023, score.2019) %>% 
   mutate(position = as.numeric(position))
 
 ws <- 30
