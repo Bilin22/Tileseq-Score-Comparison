@@ -4,7 +4,7 @@ library(stringr)
 library(ggpubr)
 library(tidyr)
 library(patchwork)
-library(ggrepel)
+# library(ggrepel)
 
 # old match_df
 map.2019 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/urn_mavedb_00000001-b-2_scores.csv") %>% 
@@ -42,7 +42,6 @@ df <- match_df %>%
   select(hgvs_pro, score.2023, score.2019, position) %>% 
   mutate(position = as.numeric(position))
 
-# moving window for fitness score
 ws <- 30
 
 new.columns <- t(sapply(df$position, function(v) {
@@ -54,10 +53,12 @@ new.columns <- t(sapply(df$position, function(v) {
            rho = rho))
 }))
 
-window.df <- as.data.frame(new.columns) # data frame for plotting
+# data frame for plotting
+window.df <- as.data.frame(new.columns)
 
+# moving window for fitness score
+# set the color manually
 colors <- c("score2023" = "blue3", "score2019" = "red3")
-
 score.window <- ggplot(window.df, aes(x = position)) +
   geom_line(aes(y = score2023.mean, color = "score2023")) +
   geom_line(aes(y = score2019.mean, color = "score2019")) +
@@ -69,6 +70,7 @@ score.window <- ggplot(window.df, aes(x = position)) +
 score.window + guides(color = guide_legend(reverse = TRUE))
 # ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/scores.png", dpi = 700,
 #        height = 6, width = 8)
+
 
 # moving window for spearman's rho
 ggplot(window.df, aes(x = position, y = rho)) +
