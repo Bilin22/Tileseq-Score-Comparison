@@ -60,6 +60,8 @@ score.window <- ggplot(window.df, aes(x = position)) +
   theme_bw() +
   theme(legend.position = c(0.7, 0.9), 
         legend.background = element_rect(fill = "white", colour = "grey22"))
+
+score.window + annotate("rect", xmin = 40, xmax = 90, ymin = 0, ymax = 1, alpha = .2, fill = "grey66") # annotation , added a shaded rect
 # score.window + guides(color = guide_legend(reverse = TRUE))
 # ggsave(filename = "../Tileseq_Scores/GDI1/moving_window/output/scores.png", dpi = 700,
 #        height = 6, width = 8)
