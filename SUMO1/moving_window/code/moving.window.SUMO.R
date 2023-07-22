@@ -1,5 +1,6 @@
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 
 # old score
 map.2019 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/urn_mavedb_00000001-b-2_scores.csv") %>% 
@@ -22,6 +23,37 @@ map.2023 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/select_t
   mutate(position = ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
                                                         substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
 
+# VARITY_R Score & VARITY_ER Score
+
+# a ref map for amino acid
+aa <- c("A" = "Ala", "R" = "Arg", "N" = "Asn", "D" = "Asp", "C" = "Cys", 
+           "E" = "Glu", "Q" = "Gln", "G" = "Gly", "H" = "His", "I" = "Ile",
+           "L" = "Leu", "K" = "Lys", "M" = "Met", "F" = "Phe", "P" = "Pro",
+           "S" = "Ser", "T" = "Thr", "W" = "Trp", "Y" = "Tyr", "V" = "Val")
+
+
+VARITY_R.score <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/SUMO1[P63165]_1-101_VARITY_R_20230721193531406123.csv") %>% 
+  select(aa_pos, aa_ref, aa_alt, VARITY_R) %>% 
+  drop_na() %>% 
+  mutate(hgvs_pro = paste("p.", aa[aa_ref], aa_pos, aa[aa_alt], sep = '')) %>% 
+  distinct() %>% 
+  select(hgvs_pro, aa_pos, VARITY_R)
+
+VARITY_ER.score <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/SUMO1[P63165]_1-101_VARITY_ER_20230721193815096805.csv") %>% 
+  select(aa_pos, aa_ref, aa_alt, VARITY_ER) %>% 
+  drop_na() %>% 
+  mutate(hgvs_pro = paste("p.", aa[aa_ref], aa_pos, aa[aa_alt], sep = '')) %>% 
+  distinct() %>% 
+  select(hgvs_pro, aa_pos, VARITY_ER)
+
+
+# a match df for VARITY scores
+VARITY_df <- merge(VARITY_R.score, VARITY_ER.score, by = "hgvs_pro") %>% 
+  select(hgvs_pro, aa_pos.x, VARITY_R, VARITY_ER) %>% 
+  rename(position = aa_pos.x)
+
+
+
 # build a matched table
 match_df <- merge(map.2023, map.2019, by = "hgvs_pro") %>% 
   rename(score.2023 = score.x, se.2023 = se.x, score.2019 = score.y, se.2019 = se.y, 
@@ -30,6 +62,13 @@ match_df <- merge(map.2023, map.2019, by = "hgvs_pro") %>%
   mutate(plotname = ifelse(abs(score.2023 - score.2019) >= 0.4, hgvs_pro, "")) %>% 
   mutate(position = ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
                            substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
+
+
+# match df between 2 map scores and VARITY
+
+
+
+
 
 # select 3 columns
 df <- match_df %>% 
