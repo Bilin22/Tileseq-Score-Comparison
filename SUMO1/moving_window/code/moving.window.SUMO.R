@@ -56,24 +56,20 @@ VARITY_df <- merge(VARITY_R.score, VARITY_ER.score, by = "hgvs_pro") %>%
 
 # build a matched table
 match_df <- merge(map.2023, map.2019, by = "hgvs_pro") %>% 
-  rename(score.2023 = score.x, se.2023 = se.x, score.2019 = score.y, se.2019 = se.y, 
-         mut = mut.x, wt = wt.x, type = type.x) %>% 
-  select(hgvs_pro, score.2023, se.2023, score.2019, se.2019, wt, mut, type) %>% 
-  mutate(plotname = ifelse(abs(score.2023 - score.2019) >= 0.4, hgvs_pro, "")) %>% 
-  mutate(position = ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
-                           substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
+  rename(score.2023 = score.x, score.2019 = score.y, type = type.x) %>% 
+  select(hgvs_pro, score.2023, score.2019, type)
+  # mutate(plotname = ifelse(abs(score.2023 - score.2019) >= 0.4, hgvs_pro, "")) %>% 
+  # mutate(position = ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
+  #                          substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
 
 
 # match df between 2 map scores and VARITY
-
-
-
+match_VARITY_df <- merge(match_df, VARITY_df, by = "hgvs_pro")
 
 
 # select 3 columns
-df <- match_df %>% 
-  select(position, score.2023, score.2019) %>% 
-  mutate(position = as.numeric(position))
+df <- match_VARITY_df %>% 
+  select(position, score.2023, score.2019, VARITY_R, VARITY_ER)
 
 ws <- 30
 
@@ -81,15 +77,62 @@ new.columns <- t(sapply(df$position, function(v) {
   relevant <- which(abs(df$position - v) < ws / 2)
   score_2023 <- df$score.2023[relevant]
   score_2019 <- df$score.2019[relevant]
+  VARITY_R.score <- df$VARITY_R[relevant]
+  VARITY_ER.score <- df$VARITY_ER[relevant]
   rho <- cor(df[relevant,c("score.2023","score.2019")],method="spearman")[1,2]
-  return(c(position = v, score2023.mean = mean(score_2023), score2019.mean = mean(score_2019),
+  rho_VARITY_R_2023 <- cor(df[relevant,c("score.2023","VARITY_R")],method="spearman")[1,2]
+  rho_VARITY_ER_2023 <- cor(df[relevant,c("score.2023","VARITY_ER")],method="spearman")[1,2]
+  rho_VARITY_R_2019 <- cor(df[relevant,c("score.2019","VARITY_R")],method="spearman")[1,2]
+  rho_VARITY_ER_2019 <- cor(df[relevant,c("score.2019","VARITY_ER")],method="spearman")[1,2]
+  return(c(position = v, score2023.mean = mean(score_2023), score2019.mean = mean(score_2019), 
+           VARITY_R.mean = mean(VARITY_R.score), VARITY_ER.mean = mean(VARITY_ER.score), 
+           rho_VARITY_R_2023 = rho_VARITY_R_2023, rho_VARITY_ER_2023 = rho_VARITY_ER_2023, 
+           rho_VARITY_R_2019 = rho_VARITY_R_2019, rho_VARITY_ER_2019 = rho_VARITY_ER_2019,
            rho = rho))
 }))
 
 # data frame for plotting
 window.df <- as.data.frame(new.columns)
 
-# moving window for fitness score
+V_colors <- c("VARITY_R" = "magenta3", "VARITY_ER" = "slateblue3")
+# moving window for VARITY and score 2023
+ggplot(window.df, aes(x = position)) +
+  geom_line(aes(y = rho_VARITY_R_2023, color = "VARITY_R")) +
+  geom_line(aes(y = rho_VARITY_ER_2023, color = "VARITY_ER")) +
+  scale_color_manual(values = V_colors) +
+  theme_bw() +
+  labs(title = "Correlation between 2023 Fitness Scores & VARITY Scores of SUMO1",
+       x = "position", y = "Spearman's rho", colour = "Scores") +
+  theme(legend.position = c(0.9, 0.9), 
+        legend.background = element_rect(fill = "white", colour = "grey22"))
+# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_2023.png", dpi = 700,
+#        height = 6, width = 8)
+
+
+# moving window for VARITY and score 2019
+ggplot(window.df, aes(x = position)) +
+  geom_line(aes(y = rho_VARITY_R_2019, color = "VARITY_R")) +
+  geom_line(aes(y = rho_VARITY_ER_2019, color = "VARITY_ER")) +
+  scale_color_manual(values = V_colors) +
+  theme_bw() +
+  labs(title = "Correlation between 2019 Fitness Scores & VARITY Scores of SUMO1",
+       x = "position", y = "Spearman's rho", colour = "Scores") +
+  theme(legend.position = c(0.9, 0.9), 
+        legend.background = element_rect(fill = "white", colour = "grey22"))
+ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_2019.png", dpi = 700,
+       height = 6, width = 8)
+
+
+# moving window for m
+
+
+
+
+
+
+
+
+# 2. moving window for fitness score
 # set the color manually
 colors <- c("score2023" = "blue3", "score2019" = "red3")
 score.window <- ggplot(window.df, aes(x = position)) +
