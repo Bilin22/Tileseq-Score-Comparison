@@ -142,7 +142,6 @@ comparison + guides(color = guide_legend(reverse = TRUE))
 
 
 
-
 # 2. moving window for fitness score
 # set the color manually
 colors <- c("score2023" = "darkgreen", "score2019" = "orange")
