@@ -3,14 +3,13 @@ library(dplyr)
 library(tidyr)
 
 # old data
-map_2021 <- read.csv(file = "../Tileseq_Scores/GDI1/Score/data/score2021.csv") %>% 
-  select(hgvsp, score, se) %>% 
-  distinct() %>% 
+map_2021 <- read.csv(file = "../Tileseq_Scores/GDI1/moving_window/data/urn_mavedb_00000066-a-1_scores.csv") %>% 
+  select(hgvs_pro, score, score_sd) %>% 
+  mutate(hgvs_pro = )
   mutate(mut=substr(hgvsp, nchar(hgvsp)-2, nchar(hgvsp))) %>%
   mutate(wt=substr(hgvsp, 3, 5)) %>% 
   mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
-                                                            "nonsense", "missense"))) %>% 
-  rename("hgvs_pro" = hgvsp)
+                                                            "nonsense", "missense")))
 
 # new data
 map_2023 <- read.csv(file = "../Tileseq_Scores/GDI1/Score/data/select_t1_simple_aa_floored.csv", 
