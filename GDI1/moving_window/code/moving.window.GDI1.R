@@ -1,5 +1,6 @@
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 
 # old data
 map_2021 <- read.csv(file = "../Tileseq_Scores/GDI1/Score/data/score2021.csv") %>% 
