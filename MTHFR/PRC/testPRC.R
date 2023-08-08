@@ -90,8 +90,8 @@ posRanges <- c(posRanges,list(c(1,maxPos)))
 #read predictor files
 
 # error in the condition here: the condition has length > 1
-# if (!is.na(args$predictors)) {
-if (length(args$predictors) > 0){
+if (!is.na(args$predictors)) {
+# if (length(args$predictors) > 0){
   # predFiles <- strsplit(unlist(args$predictors),",")
   predFiles <- strsplit(args$predictors,",")[[1]]
   #check if all the predictor files actually exist
@@ -110,8 +110,8 @@ if (length(args$predictors) > 0){
     prd
   })
   
-  # if (is.na(args$predictorNames)) {
-  if (length(args$predictorNames) > 0){
+  if (is.na(args$predictorNames)) {
+  # if (length(args$predictorNames) > 0){
     logger$warn("No predictor names provided. Using numbers instead...")
     prNames <- paste0("Predictor",seq_along(predictors))
   } else {
@@ -121,8 +121,8 @@ if (length(args$predictors) > 0){
     }
   }
   
-  # if (is.na(args$predictorOrders)) {
-  if (length(args$predictorOrders) > 0) {
+  if (is.na(args$predictorOrders)) {
+  # if (length(args$predictorOrders) > 0) {
     logger$warn("No predictor orders provided, assuming ascending for each...")
     prOrders <- rep(TRUE,length(predictors))
   } else {
@@ -137,14 +137,35 @@ if (length(args$predictors) > 0){
 
 
 #monotonization helper function
+# monotonize <- function(xs) {
+#   for (i in 2:length(xs)) {
+#     if (xs[[i]] < xs[[i-1]]) {
+#       xs[[i]] <- xs[[i-1]]
+#     }
+#   }
+#   xs
+# }
+
+
+# monotonization helper function
+# monotonization helper function
 monotonize <- function(xs) {
   for (i in 2:length(xs)) {
-    if (xs[[i]] < xs[[i-1]]) {
-      xs[[i]] <- xs[[i-1]]
+    print(paste("xs[[i]]:", xs[[i]]))
+    print(paste("xs[[i - 1]]:", xs[[i - 1]]))
+    stop("Comparison failed. Please check the values.")
+    if (xs[[i]] < xs[[i - 1]]) {
+      print("Comparison failed:")
+      print(paste("xs[[i]]:", xs[[i]]))
+      print(paste("xs[[i - 1]]:", xs[[i - 1]]))
+      stop("Comparison failed. Please check the values.")
     }
   }
   xs
 }
+
+
+
 
 #Balancing helper function
 balance.prec <- function(ppv.prec,prior) {
@@ -152,19 +173,42 @@ balance.prec <- function(ppv.prec,prior) {
 }
 
 #helper function to configure precision with monotonization and balancing parameters
-configure.prec <- function(sheet,monotonized=TRUE,balanced=FALSE) {
-  # test
-  
-  ppv <- sheet[,"ppv.prec"]
+# configure.prec <- function(sheet,monotonized=TRUE,balanced=FALSE) {
+#   # test
+#   
+#   ppv <- sheet[,"ppv.prec"]
+#   if (balanced) {
+#     prior <- sheet[1,"tp"]/(sheet[1,"tp"]+sheet[1,"fp"])
+#     ppv <- balance.prec(ppv,prior)
+#   } 
+#   if (monotonized) {
+#     ppv <- monotonize(ppv)
+#   }
+#   return(ppv)
+# }
+
+configure.prec <- function(sheet, monotonized = TRUE, balanced = FALSE) {
+  ppv <- sheet$ppv.prec  # Extract the appropriate column from the YogiROC object
+  print("Before balancing and monotonization:")
+  print(ppv)  # Print ppv before any operations
   if (balanced) {
-    prior <- sheet[1,"tp"]/(sheet[1,"tp"]+sheet[1,"fp"])
-    ppv <- balance.prec(ppv,prior)
+    prior <- sheet$tp[1] / (sheet$tp[1] + sheet$fp[1])  # Extract the corresponding columns for balancing
+    ppv <- balance.prec(ppv, prior)
   } 
   if (monotonized) {
     ppv <- monotonize(ppv)
   }
+  print("After balancing and monotonization:")
+  print(ppv)  # Print ppv after any operations
   return(ppv)
 }
+
+
+
+
+
+
+
 
 #calculate positions in which a number sequence changes
 changePoints <- function(xs) {
@@ -191,6 +235,7 @@ lapply(posRanges, function(range) {
   } 
   
   yr <- yogiroc::yr2(refsubset$referenceSet=="Positive", data, high=dataOrder)
+  print(yr)
   yogiroc::draw.prc.CI(yr,monotonized=!args$noMono,balanced=!args$noBalancing,main=rangeLabel)
   grid()
   abline(h=90,col="gray",lty="dashed")

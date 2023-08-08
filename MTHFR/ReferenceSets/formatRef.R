@@ -82,7 +82,7 @@ both_alleles$early_sum <- both_alleles$early.x + both_alleles$early.y
 both_alleles$late_sum <- both_alleles$late.x + both_alleles$late.y
 
 # Identify rows where (early.x + early.y) > (late.x + late.y)
-positive_rows <- both_alleles$early_sum > both_alleles$late_sum
+positive_rows <- both_alleles$early_sum >= both_alleles$late_sum
 
 both_alleles$category[positive_rows] <- "positive"
 
