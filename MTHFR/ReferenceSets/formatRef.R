@@ -84,12 +84,26 @@ both_alleles$late_sum <- both_alleles$late.x + both_alleles$late.y
 # Identify rows where (early.x + early.y) > (late.x + late.y)
 positive_rows <- both_alleles$early_sum >= both_alleles$late_sum
 
-both_alleles$category[positive_rows] <- "positive"
+both_alleles$category[positive_rows] <- "Positive"
 
 early_onset_positive_ref <- both_alleles %>% 
-  filter(category == "positive")
+  filter(category == "Positive")
 
 write.csv(early_onset_positive_ref, "early_onset_positive_ref.csv", row.names = FALSE)
 
+# the gnomad negative ref sets from the script
+gnomADRef <- read.csv("MTHFR_refVars.csv") %>% 
+  filter(referenceSet == "Negative")
 
+# change mis-annotated values
+write.csv(gnomADRef, "NegativeRef.csv", row.names = FALSE)
 
+# newer version 
+negativeRef <- read.csv("NegativeRef.csv")
+positiveRef <- read.csv("PositiveRef.csv") %>% 
+  select(hgvsc, hgvsp, category) %>% 
+  rename("referenceSet"= "category")
+  
+Ref <- full_join(negativeRef, positiveRef, by = "hgvsc")
+
+write.csv(Ref, "combined_ref.csv", row.names = FALSE)
