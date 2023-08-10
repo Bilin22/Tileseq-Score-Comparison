@@ -94,38 +94,38 @@ new.columns <- t(sapply(df$position, function(v) {
 # data frame for plotting
 window.df <- as.data.frame(new.columns)
 
-V_colors <- c("VARITY_R" = "magenta3", "VARITY_ER" = "slateblue3")
-# moving window for VARITY and score 2023
+V_colors <- c("score.2019" = "dodgerblue3", "score.2023" = "firebrick2")
+# moving window for VARITY_R and score 2023 score 2019
 ggplot(window.df, aes(x = position)) +
-  geom_line(aes(y = rho_VARITY_R_2023, color = "VARITY_R")) +
-  geom_line(aes(y = rho_VARITY_ER_2023, color = "VARITY_ER")) +
+  geom_line(aes(y = rho_VARITY_R_2023, color = "score.2023")) +
+  geom_line(aes(y = rho_VARITY_R_2019, color = "score.2019")) +
   scale_color_manual(values = V_colors) +
   theme_bw() +
-  labs(title = "Correlation between 2023 Fitness Scores & VARITY Scores of SUMO1",
+  labs(title = "Correlation between Fitness Scores & VARITY_R Prob of pathogenicity of SUMO1",
        x = "position", y = "Spearman's rho", colour = "Scores") +
   theme(legend.position = c(0.9, 0.9), 
         legend.background = element_rect(fill = "white", colour = "grey22"))
-# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_2023.png", dpi = 700,
+# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_R.png", dpi = 700,
 #        height = 6, width = 8)
 
 
-# moving window for VARITY and score 2019
+# moving window for VARITY_ER and score 2019 2023
 ggplot(window.df, aes(x = position)) +
-  geom_line(aes(y = rho_VARITY_R_2019, color = "VARITY_R")) +
-  geom_line(aes(y = rho_VARITY_ER_2019, color = "VARITY_ER")) +
+  geom_line(aes(y = rho_VARITY_ER_2023, color = "score.2023")) +
+  geom_line(aes(y = rho_VARITY_ER_2019, color = "score.2019")) +
   scale_color_manual(values = V_colors) +
   theme_bw() +
-  labs(title = "Correlation between 2019 Fitness Scores & VARITY Scores of SUMO1",
+  labs(title = "Correlation between Fitness Scores & VARITY_ER Prob of pathogenicity of SUMO1",
        x = "position", y = "Spearman's rho", colour = "Scores") +
   theme(legend.position = c(0.9, 0.9), 
         legend.background = element_rect(fill = "white", colour = "grey22"))
-# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_2019.png", dpi = 700,
+# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_ER.png", dpi = 700,
 #        height = 6, width = 8)
 
 
 # moving window for mean fitness score 2023 and VARITY scores
-colors_4 <- c("VARITY_R" = "magenta3", "VARITY_ER" = "slateblue3", 
-              "Score_2023" = "darkgreen", "Score_2019" = "orange")
+colors_4 <- c("VARITY_R" = "black", "VARITY_ER" = "grey55", 
+              "Score_2023" = "firebrick2", "Score_2019" = "dodgerblue3")
 
 comparison <- ggplot(window.df, aes(x = position)) +
   geom_line(aes(y = score2023.mean , color = "Score_2023")) +
@@ -135,7 +135,7 @@ comparison <- ggplot(window.df, aes(x = position)) +
   scale_color_manual(values = colors_4) +
   theme_bw() +
   labs(title = "Average Fitness Scores & VARITY Scores of SUMO1",
-       x = "position", y = "Mean Fitness Score", colour = "Scores") 
+       x = "position", y = "Mean Score", colour = "Scores") 
 comparison + guides(color = guide_legend(reverse = TRUE))
 # ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/scores_VARITY_year.png", dpi = 700,
 #        height = 6, width = 8)
@@ -144,27 +144,27 @@ comparison + guides(color = guide_legend(reverse = TRUE))
 
 # 2. moving window for fitness score
 # set the color manually
-colors <- c("score2023" = "darkgreen", "score2019" = "orange")
-score.window <- ggplot(window.df, aes(x = position)) +
-  geom_line(aes(y = score2023.mean, color = "score2023")) +
-  geom_line(aes(y = score2019.mean, color = "score2019")) +
-  labs(title = "Average Fitness Scores of SUMO1", x = "position", y = "mean fitness score", color = "Legend") +
-  scale_color_manual(values = colors) +
-  theme_bw() +
-  theme(legend.position = c(0.9, 0.9), 
-        legend.background = element_rect(fill = "white", colour = "grey22"))
-score.window + guides(color = guide_legend(reverse = TRUE))
+# colors <- c("score2023" = "darkgreen", "score2019" = "orange")
+# score.window <- ggplot(window.df, aes(x = position)) +
+#   geom_line(aes(y = score2023.mean, color = "score2023")) +
+#   geom_line(aes(y = score2019.mean, color = "score2019")) +
+#   labs(title = "Average Fitness Scores of SUMO1", x = "position", y = "mean fitness score", color = "Legend") +
+#   scale_color_manual(values = colors) +
+#   theme_bw() +
+#   theme(legend.position = c(0.9, 0.9), 
+#         legend.background = element_rect(fill = "white", colour = "grey22"))
+# score.window + guides(color = guide_legend(reverse = TRUE))
 # ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/scores.png", dpi = 700,
 #        height = 6, width = 8)
 
 
-# moving window for spearman's rho
+# moving window for spearman's rho bwtween scores
 ggplot(window.df, aes(x = position, y = rho)) +
   geom_line() +
   labs(title = "Spearman Correlation Coefficient between 2023 & 2019 Fitness Score of SUMO1",
        x = "position", y = "Spearman's rho") +
   theme_bw()
-# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman.png", dpi = 700,
-#        height = 6, width = 8)
+ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_score.png", dpi = 700,
+       height = 6, width = 8)
 
 
