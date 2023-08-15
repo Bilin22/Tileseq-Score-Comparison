@@ -53,7 +53,7 @@ se.boxplot <- se.2019 + se.2023 + plot_layout(guides = "collect")
 
 # scatter plot for scores, sep by mutation type
 combined_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2019)) + 
-  geom_point(aes(color=type, alpha=0.9)) +
+  geom_point(aes(color=type),  alpha=0.8) +
   geom_text_repel(aes(label = plotname),size = 1.8,max.overlaps = 8) +
   facet_wrap(~ type) +
   scale_color_manual(values = c("grey59", "red2", "chartreuse3")) +
@@ -67,7 +67,7 @@ combined_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2019)) +
 
 # combined scatter plot (sep by mutation types)
 overall_mutation <- ggplot(match_df, aes(x = score.2023, y = score.2019)) + 
-  geom_point(aes(color=type, alpha=0.9)) +
+  geom_point(aes(color=type), alpha=0.8) +
   stat_cor(method = "spearman", cor.coef.name = c("rho", "R")) +
   theme_bw()+
   theme(legend.position = "bottom") +
