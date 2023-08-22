@@ -2,8 +2,12 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
+
+setwd("~/Desktop/Github Projects/Tileseq_Scores/SUMO1/moving_window")
+
+
 # old score
-map.2019 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/urn_mavedb_00000001-b-2_scores.csv") %>% 
+map.2019 <- read.csv(file = "data/urn_mavedb_00000001-b-2_scores.csv") %>% 
   select(hgvs_pro, score, se) %>% 
   distinct() %>% 
   mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
@@ -14,7 +18,7 @@ map.2019 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/urn_mave
                            substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))
 
 # new score
-map.2023 <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/select_t1_simple_aa.csv", 
+map.2023 <- read.csv(file = "data/select_t1_simple_aa.csv", 
                      skip = 16) %>% 
   mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
   mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
@@ -32,14 +36,14 @@ aa <- c("A" = "Ala", "R" = "Arg", "N" = "Asn", "D" = "Asp", "C" = "Cys",
            "S" = "Ser", "T" = "Thr", "W" = "Trp", "Y" = "Tyr", "V" = "Val")
 
 
-VARITY_R.score <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/SUMO1[P63165]_1-101_VARITY_R_20230721193531406123.csv") %>% 
+VARITY_R.score <- read.csv(file = "data/SUMO1[P63165]_1-101_VARITY_R_20230721193531406123.csv") %>% 
   select(aa_pos, aa_ref, aa_alt, VARITY_R) %>% 
   drop_na() %>% 
   mutate(hgvs_pro = paste("p.", aa[aa_ref], aa_pos, aa[aa_alt], sep = '')) %>% 
   distinct() %>% 
   select(hgvs_pro, aa_pos, VARITY_R)
 
-VARITY_ER.score <- read.csv(file = "../Tileseq_Scores/SUMO1/moving_window/data/SUMO1[P63165]_1-101_VARITY_ER_20230721193815096805.csv") %>% 
+VARITY_ER.score <- read.csv(file = "data/SUMO1[P63165]_1-101_VARITY_ER_20230721193815096805.csv") %>% 
   select(aa_pos, aa_ref, aa_alt, VARITY_ER) %>% 
   drop_na() %>% 
   mutate(hgvs_pro = paste("p.", aa[aa_ref], aa_pos, aa[aa_alt], sep = '')) %>% 
@@ -97,29 +101,29 @@ window.df <- as.data.frame(new.columns)
 V_colors <- c("score.2019" = "dodgerblue3", "score.2023" = "firebrick2")
 # moving window for VARITY_R and score 2023 score 2019
 ggplot(window.df, aes(x = position)) +
-  geom_line(aes(y = rho_VARITY_R_2023, color = "score.2023")) +
-  geom_line(aes(y = rho_VARITY_R_2019, color = "score.2019")) +
+  geom_line(aes(y = rho_VARITY_R_2023, color = "score.2023"), linewidth = 1) +
+  geom_line(aes(y = rho_VARITY_R_2019, color = "score.2019"), linewidth = 1) +
   scale_color_manual(values = V_colors) +
   theme_bw() +
   labs(title = "Correlation between Fitness Scores & VARITY_R Prob of pathogenicity of SUMO1",
        x = "position", y = "Spearman's rho", colour = "Scores") +
   theme(legend.position = c(0.9, 0.9), 
         legend.background = element_rect(fill = "white", colour = "grey22"))
-# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_R.png", dpi = 700,
+# ggsave(filename = "output/spearman_VARITY_R.png", dpi = 700,
 #        height = 6, width = 8)
 
 
 # moving window for VARITY_ER and score 2019 2023
 ggplot(window.df, aes(x = position)) +
-  geom_line(aes(y = rho_VARITY_ER_2023, color = "score.2023")) +
-  geom_line(aes(y = rho_VARITY_ER_2019, color = "score.2019")) +
+  geom_line(aes(y = rho_VARITY_ER_2023, color = "score.2023"), linewidth = 1) +
+  geom_line(aes(y = rho_VARITY_ER_2019, color = "score.2019"), linewidth = 1) +
   scale_color_manual(values = V_colors) +
   theme_bw() +
   labs(title = "Correlation between Fitness Scores & VARITY_ER Prob of pathogenicity of SUMO1",
        x = "position", y = "Spearman's rho", colour = "Scores") +
   theme(legend.position = c(0.9, 0.9), 
         legend.background = element_rect(fill = "white", colour = "grey22"))
-# ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_VARITY_ER.png", dpi = 700,
+# ggsave(filename = "output/spearman_VARITY_ER.png", dpi = 700,
 #        height = 6, width = 8)
 
 
@@ -160,11 +164,16 @@ comparison + guides(color = guide_legend(reverse = TRUE))
 
 # moving window for spearman's rho bwtween scores
 ggplot(window.df, aes(x = position, y = rho)) +
-  geom_line() +
+  geom_line(linewidth = 1) +
   labs(title = "Spearman Correlation Coefficient between 2023 & 2019 Fitness Score of SUMO1",
        x = "position", y = "Spearman's rho") +
   theme_bw()
-ggsave(filename = "../Tileseq_Scores/SUMO1/moving_window/output/spearman_score.png", dpi = 700,
-       height = 6, width = 8)
+# ggsave(filename = "output/spearman_score.png", dpi = 700,
+#        height = 6, width = 8)
 
+# 
+# old_data <- read.csv("../Tileseq_Scores/SUMO1/Score_comparison/data/urn_mavedb_00000001-b-2_scores.csv") %>% 
+#   select(hgvs_pro, score, sd, se)
+# 
+# write.csv(old_data, "../Tileseq_Scores/SUMO1/Score_comparison/data/old_data.csv")
 
