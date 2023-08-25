@@ -23,5 +23,6 @@ The detailed goals include:
 * Small Ubiquitin Like Modifier 1: [SUMO1](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/SUMO1)
 * Trans-2,3-Enoyl-CoA Reductase: [TECR](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/TECR)
 * Ubiquitin Conjugating Enzyme E2 I: [UBE2I](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/UBE2I)
+* Methylenetetrahydrofolate reductase: [MTHFR](https://github.com/Bilin22/Tileseq-Score-Comparison/wiki/MTHFR)
 
 Reference: [tileseqMave](https://github.com/rothlab/tileseqMave#joining-variant-counts-and-computing-marginal-frequencies)
