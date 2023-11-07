@@ -1,5 +1,7 @@
 library(tidyverse)
 library(mavevis)
+library(ggprism)
+library(ggpubr)
 
 # setwd
 setwd("~/Desktop/Github Projects/Tileseq_Scores/SUMO1/SUMO1_2023-05-09-16-17-21_scores/")
@@ -88,15 +90,49 @@ dot_graph <- ggplot(data = withscore, mapping = aes(x = type, y = score)) +
   geom_hline(yintercept = 1, linetype = "dashed", col = "darkgreen", size = .5) +
   geom_hline(yintercept = 0, linetype = "dashed", col = "firebrick", size = .5) +
   labs(y = "functionaity score per AA") +
-  theme_light()
+  theme_prism()
 
 
 with_line <- dot_graph + 
   stat_summary(fun=median, geom="point", shape=18,
-               size=2, color="gold2") 
+               size=2, color="gold2")
   
-ggsave(file = "comparison_overall.png",
-       dpi = 700, width = 4, height = 3)
+# ggsave(file = "comparison_overall.png",
+#        dpi = 700, width = 6, height = 5)
 
-# wilcox.test()
+# get the median of the withscore data
 
+rbp2 <- as.numeric(unlist(withscore %>% 
+  filter(type == "near RBP2") %>% 
+  select(score)))
+
+ubc9 <- as.numeric(unlist(withscore %>% 
+                            filter(type == "near UBC9") %>% 
+                            select(score)))
+
+surface <- as.numeric(unlist(withscore %>% 
+                            filter(type == "surface") %>% 
+                            select(score)))
+
+# wilcox.test() on the score data
+RBP2vsSurface <- round(wilcox.test(x = rbp2, y = surface, 
+                             alternative = "less")$p.value, 7)
+
+UBC9vsSurface <- round(wilcox.test(x = ubc9, y = surface, 
+                             alternative = "less")$p.value, 4)
+
+
+
+stat.test <- tibble::tribble(~group1, ~group2, ~p.adj,
+                            "near RBP2", "surface", RBP2vsSurface,
+                            "near UBC9", "surface", UBC9vsSurface)
+with_line +  stat_pvalue_manual(
+  stat.test, 
+  y.position = 1.6, step.increase = 0.1,
+  label = "p.adj"
+)
+
+ggsave(file = "sumo_struc.png",
+       dpi = 700, width = 6, height = 5)
+
+# make it into a function
