@@ -72,9 +72,19 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
                  size=2, color="gold2")
   
   # Wilcoxon test between near* groups and surface
+  p_val_df <- pairwise.wilcox.test(withscore$score, as.factor(withscore$type),
+                       alternative = "greater",
+                       p.adjust.method = "none") %>% 
+    broom::tidy() %>% 
+    mutate(p.value = round(p.value, 6))
   
+  plot <- dot_plot_with_median +  stat_pvalue_manual(
+    p_val_df, 
+    y.position = 1.6, step.increase = 0.1,
+    label = "p.value"
+  )
   
-  return(dot_plot_with_median)
+  return(plot)
 
 }
 
