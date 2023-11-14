@@ -7,10 +7,11 @@ library(ggpubr)
 
 # parameters needed: (pdb.acc) PDB accession ,
 # (main.chain) chain identifier
-# use histogram to manually pick the threshold for burial
+# use histogram to manually pick the (threshold) for burial
 # default value of threshold = 0.1 # is it make sense to have the default value??
-# (score) a string indicates the score file
+# (score) a string indicates the score file location
 
+# example
 
 # consistency_check(pdb.acc = "1KPS",
 # main.chain = "A", threshold = 0.1,
@@ -87,4 +88,5 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
   return(plot)
 
 }
+
 
