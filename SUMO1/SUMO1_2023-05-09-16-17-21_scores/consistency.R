@@ -13,7 +13,7 @@ library(ggpubr)
 
 
 # consistency_check(pdb.acc = "1KPS",
-# main.chain = "A", threshold = 0.1, 
+# main.chain = "A", threshold = 0.1,
 # score_file = "~/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv")
 
 
@@ -76,7 +76,7 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
                        alternative = "greater",
                        p.adjust.method = "none") %>% 
     broom::tidy() %>% 
-    mutate(p.value = round(p.value, 6))
+    mutate(p.value = round(p.value, 7))
   
   plot <- dot_plot_with_median +  stat_pvalue_manual(
     p_val_df, 
