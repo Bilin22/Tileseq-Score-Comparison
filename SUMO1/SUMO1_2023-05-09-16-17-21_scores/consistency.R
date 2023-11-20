@@ -78,7 +78,7 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
                        p.adjust.method = "none") %>% 
     broom::tidy() %>% 
     filter(p.value <= 0.05) %>%
-    mutate(p.value = round(p.value, 6))
+    mutate(p.value = round(p.value, 4))
   
   plot <- dot_plot_with_median +  stat_pvalue_manual(
     p_val_df, 
