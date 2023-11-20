@@ -20,7 +20,7 @@ library(ggpubr)
 
 consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
   # get the df
-  struc <- struc <- mavevis::calc.strucfeats(pdb.acc, main.chain) %>% 
+  struc <- mavevis::calc.strucfeats(pdb.acc, main.chain) %>% 
     drop_na()
   # select columns and create indicators
   newstruc <- struc %>% 
@@ -74,10 +74,11 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
   
   # Wilcoxon test between near* groups and surface
   p_val_df <- pairwise.wilcox.test(withscore$score, as.factor(withscore$type),
-                       alternative = "greater",
+                       alternative = "two.sided",
                        p.adjust.method = "none") %>% 
     broom::tidy() %>% 
-    mutate(p.value = round(p.value, 7))
+    filter(p.value <= 0.05) %>%
+    mutate(p.value = round(p.value, 6))
   
   plot <- dot_plot_with_median +  stat_pvalue_manual(
     p_val_df, 
