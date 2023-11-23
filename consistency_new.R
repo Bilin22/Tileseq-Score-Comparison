@@ -16,8 +16,8 @@ library(ggbeeswarm)
 # example
 
 # consistency_check(pdb.acc = "1KPS",
-# main.chain = "A", threshold = 0.1,
-# score_file = "~/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv")
+# main.chain = "A",
+# score.file = "~/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv")
 
 # core_threshold
 # surface_threshold
