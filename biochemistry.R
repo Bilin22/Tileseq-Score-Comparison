@@ -3,8 +3,8 @@ library(tidyverse)
 library(mavevis)
 library(ggprism)
 library(ggpubr)
-# library(beeswarm)
 library(ggbeeswarm)
+library(argparser)
 
 
 # parameters needed: (pdb.acc) PDB accession ,
@@ -13,20 +13,54 @@ library(ggbeeswarm)
 # default value of threshold = 0.1 # is it make sense to have the default value??
 # (score) a string indicates the score file location
 
-# example
+
+# consistency_check("3UIP", "B",
+#                   map =
+#                     "~/Desktop/Github Projects/Tileseq_Scores/SUMO1/SUMO1_2023-05-09-16-17-21_scores/select_t1_simple_aa.csv")
+# # example
 
 # consistency_check(pdb.acc = "1KPS",
 # main.chain = "A",
-# score.file = "~/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv")
+# map = "~/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv")
 
 # core_threshold
 # surface_threshold
+
+# Rscript biochemistry.R
+# "~/Desktop/Github Projects/Tileseq_Scores/SUMO1/SUMO1_2023-05-09-16-17-21_scores/select_t1_simple_aa.csv"
+# --pdb "3UIP" --chain "B"
+
+
+#process command line arguments
+p <- arg_parser(
+  "Generate a beeswarm plot for biochemistry consistency check",
+  name = "biochemistry.R"
+)
+p <- add_argument(p, "--pdb", help = "a string represents PDB accession")
+p <- add_argument(p, "--chain", help = "a string represents chain identifier")
+p <- add_argument(p, "--surfaceThreshold", 
+                  help = "greater than the threshold amount (in percentage) 
+                  of surface area accessible to solvent, default = 50", 
+                  default = 50)
+p <- add_argument(p, "--coreThreshold", help = "less than the 
+                  threshold amount (in percentage) of surface area
+                  accessible to solvent, default = 20", 
+                  default = 50)
+p <- add_argument(p, "--burialThreshold", help = "threshold for burial, 
+                  default = 0.1", default = 0.1)
+p <- add_argument(p, "map", help = "the location of map file in MAVEdb format.")
+p <- add_argument(p, "--outputFile", help = "output PDF file name", 
+                  default = "beeswarm_plot.pdf")
+args <- parse_args(p)
+
+
 
 consistency_check <- function(pdb.acc, main.chain, 
                               surface.threshold = 50, 
                               core.threshold = 20, 
                               burial.threshold = 0.1, 
-                              score.file){
+                              map, 
+                              output.file = 'beeswarm_plot.pdf'){
   # get the df
   struc <- mavevis::calc.strucfeats(pdb.acc, main.chain) %>% 
     drop_na()
@@ -43,7 +77,8 @@ consistency_check <- function(pdb.acc, main.chain,
   }
   
   # read the score df
-  score_df <- read.csv(file = score.file ,skip = 16) %>% 
+  print(paste("Reading score file:", map))
+  score_df <- read.csv(file = map ,skip = 16) %>% 
     mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
     mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
     mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
@@ -67,19 +102,17 @@ consistency_check <- function(pdb.acc, main.chain,
   final <- rbind(core, surface)
   
   for (i in c(grep("near", names(withscore)))){
-    print(names(withscore)[i])
     n <- subset(withscore, withscore[,i] == 1) %>% 
       select(pos, score) %>% 
       mutate(type = substr(names(withscore)[i], 6, nchar(names(withscore)[i])))
     final <- rbind(final, n)
   }
   
-  compare_means(score~type, data = final, 
-                ref.group = "surface", method = "wilcox.test")
-  # plot the dotplot
+  # compare_means(score~type, data = final,
+  #               ref.group = "surface", method = "wilcox.test")
+  # plot the beeswarm plot
   beeswarm_plot <- ggplot(data = final, mapping = aes(x = type, y = score)) +
     geom_beeswarm(cex = 1.1,na.rm = TRUE, aes(color = type), show.legend = FALSE) +
-    # geom_dotplot(binaxis = "y", stackdir = "center", dotsize=0.6, alpha = 0.6, binwidth = 1/30) +
     geom_hline(yintercept = 1, linetype = "dashed", col = "darkgreen", size = .5) +
     geom_hline(yintercept = 0, linetype = "dashed", col = "firebrick", size = .5) +
     stat_summary(fun.y = median, 
@@ -93,11 +126,12 @@ consistency_check <- function(pdb.acc, main.chain,
     theme(legend.position = "none")+
     theme_prism()
   
-
-  
-
-  return(beeswarm_plot)
-  
+  ggsave(output.file, beeswarm_plot, device = "pdf",
+         scale = 0.9, width = 9, height = 8)
 }
 
+consistency_check(args$pdb, args$chain, 
+                  args$surfaceThreshold, args$coreThreshold, 
+                  args$burialThreshold, 
+                  args$map, args$outputFile)
 
