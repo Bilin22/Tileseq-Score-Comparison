@@ -112,7 +112,7 @@ consistency_check <- function(pdb.acc, main.chain,
   #               ref.group = "surface", method = "wilcox.test")
   # plot the beeswarm plot
   beeswarm_plot <- ggplot(data = final, mapping = aes(x = type, y = score)) +
-    geom_beeswarm(cex = 1.1,na.rm = TRUE, aes(color = type), show.legend = FALSE) +
+    geom_beeswarm(cex = 0.9,na.rm = TRUE, aes(color = type), show.legend = FALSE) +
     geom_hline(yintercept = 1, linetype = "dashed", col = "darkgreen", size = .5) +
     geom_hline(yintercept = 0, linetype = "dashed", col = "firebrick", size = .5) +
     stat_summary(fun.y = median, 
@@ -127,7 +127,7 @@ consistency_check <- function(pdb.acc, main.chain,
     theme_prism()
   
   ggsave(output.file, beeswarm_plot, device = "pdf",
-         scale = 0.9, width = 9, height = 8)
+         scale = 0.85, width = 11, height = 8)
 }
 
 consistency_check(args$pdb, args$chain, 
