@@ -3,7 +3,7 @@ library(tidyverse)
 library(mavevis)
 library(ggprism)
 library(ggpubr)
-
+library(ggbeeswarm)
 
 # parameters needed: (pdb.acc) PDB accession ,
 # (main.chain) chain identifier
@@ -17,6 +17,8 @@ library(ggpubr)
 # main.chain = "A", threshold = 0.1,
 # score_file = "~/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv")
 
+# core_threshold
+# surface_threshold
 
 consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
   # get the df
@@ -32,7 +34,8 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
   surface <- subset(newstruc, all.rel > 50) %>% 
     mutate(type = "surface")
   
-  labelled <- bind_rows(core, surface) #core + surface
+  # labelled <- bind_rows(core, surface) #core + surface
+  labelled <- rbind(core, surface)
   
   # looping over the column indices contains "rel.burial" 
   for (i in c(grep("rel.burial", colnames(newstruc))[1]: 
@@ -44,6 +47,7 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
       mutate(type = paste("near", name))
     labelled <- bind_rows(labelled, new)
   }
+  # why collapse
   # now labelled contains all labelled data
   
   score_df <- read.csv(file = score_file ,skip = 16) %>% 
@@ -53,11 +57,12 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
                                                               "nonsense", "missense"))) %>% 
     mutate(pos = as.numeric(ifelse(type == "synonymous", substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), 
                                    substr(hgvs_pro, 6, nchar(hgvs_pro) - 3)))) %>% 
-    select(pos, score, se) 
+    select(pos, score) 
   
-
+  # check 
   # join with the labelled data on "pos" column
-  withscore <- left_join(labelled, score_df)
+  withscore <- merge(labelled, score_df, by = "pos", all = TRUE)
+  # withscore <- left_join(labelled, score_df)
   
   # plot the dotplot
   dot_plot <- ggplot(data = withscore, mapping = aes(x = type, y = score)) +

@@ -7,8 +7,11 @@ library(ggpubr)
 setwd("~/Desktop/Github Projects/Tileseq_Scores/SUMO1/SUMO1_2023-05-09-16-17-21_scores/")
 
 # group into surface/core
-struc <- mavevis::calc.strucfeats("3UIP", "B") %>% 
+struc1 <- mavevis::calc.strucfeats("1KPS", "A") %>% 
   drop_na()
+
+struc <- mavevis::calc.strucfeats("3UIP", "B") %>% 
+      drop_na()
 
 newstruc <- struc %>% 
   select(res, pos, all.rel, rel.burial.UBC9, rel.burial.RAGP1, rel.burial.RBP2) %>% 
@@ -131,8 +134,9 @@ with_line +  stat_pvalue_manual(
   y.position = 1.6, step.increase = 0.1,
   label = "p.adj"
 )
-
-ggsave(file = "sumo_struc.png",
-       dpi = 700, width = 6, height = 5)
+# 
+# ggsave(file = "sumo_struc.png",
+#        dpi = 700, width = 6, height = 5)
 
 # make it into a function
+
