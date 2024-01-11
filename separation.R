@@ -27,7 +27,7 @@ d_score <- round((synonymous_mean - nonsense_mean) /
 # set y -axis abs value, increase the breaks
 ggplot(score_df, aes(x = score, fill = type)) +
   geom_histogram(data = score_df %>% filter(type != "missense"), 
-                 aes(y = ..density..), bins = 40, position = "dodge") +
+                 aes(y = ..density..), bins = 40, position = "identity") +
   geom_histogram(data = score_df %>% filter(type == "missense"), 
                  aes(y = -..density..), bins = 40, position = "identity") +
   scale_fill_manual(values = 
@@ -43,6 +43,6 @@ ggplot(score_df, aes(x = score, fill = type)) +
   scale_y_continuous(labels = abs, 
                      breaks = scales::pretty_breaks(n = 10))  
 
-ggsave("SUMO_old_separation.pdf", height = 5, width = 7)
+# ggsave("SUMO_old_separation.pdf", height = 5, width = 7)
 
 
