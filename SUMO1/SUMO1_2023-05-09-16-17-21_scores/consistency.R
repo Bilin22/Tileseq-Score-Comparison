@@ -50,7 +50,8 @@ consistency_check <- function(pdb.acc, main.chain, threshold = 0.1, score_file){
   # why collapse
   # now labelled contains all labelled data
   
-  score_df <- read.csv(file = score_file ,skip = 16) %>% 
+  # score_df <- read.csv(file = score_file ,skip = 16) %>% 
+    score_df <- read.csv(file = score_file) %>% 
     mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
     mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
     mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
