@@ -5,7 +5,7 @@ library(tidyverse)
 # score_df <- read.csv(file = 
 #                        "~/Desktop/Github Projects/Tileseq_Scores/CALM1/Score_comparison/data/urn_mavedb_00000001-c-1_scores.csv")[, c(4, 5)] %>%
 score_df <- read.csv(file =
-                    "~/Desktop/Github Projects/Tileseq_Scores/SUMO1/Score_comparison/data/urn_mavedb_00000001-b-2_scores.csv")[, c(4, 5)] %>%
+                    "~/Desktop/Github Projects/Tileseq_Scores/CALM1/Score_comparison/data/urn_mavedb_00000001-c-1_scores.csv")[, c(4, 5)] %>%
   distinct() %>% 
   mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
   mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
@@ -43,6 +43,6 @@ ggplot(score_df, aes(x = score, fill = type)) +
   scale_y_continuous(labels = abs, 
                      breaks = scales::pretty_breaks(n = 10))  
 
-# ggsave("SUMO_old_separation.pdf", height = 5, width = 7)
+ggsave("CALM1_old_separation.png", height = 5, width = 7)
 
 
