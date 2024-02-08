@@ -1,0 +1,165 @@
+---
+title: "esm_tileseqMAVE"
+author: "Bilin"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(ggpubr)
+library(tidyr)
+library(patchwork)
+
+```
+
+```{r}
+aa <- list("A" = "Ala", "R" = "Arg", "N" = "Asn", "D" = "Asp", "C" = "Cys", 
+           "E" = "Glu", "Q" = "Gln", "G" = "Gly", "H" = "His", "I" = "Ile",
+           "L" = "Leu", "K" = "Lys", "M" = "Met", "F" = "Phe", "P" = "Pro",
+           "S" = "Ser", "T" = "Thr", "W" = "Trp", "Y" = "Tyr", "V" = "Val")
+```
+
+```{r esm}
+esm <- read.csv(file = "../data/UBE2I (UBC9) | P63279.csv") %>% 
+  mutate(hgvs_pro=paste("p.",aa[substr(variant, 0, 1)],substr(variant, 2, nchar(variant) - 1), aa[substr(variant, nchar(variant), nchar(variant))],sep = '')) %>% 
+  select(hgvs_pro, score) %>% 
+  distinct()
+```
+
+```{r old}
+old <- read.csv(file = "../data/urn_mavedb_00000001-a-3_scores.csv") %>%
+  distinct() %>% 
+  select(hgvs_pro, score, se) %>% 
+  mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
+  mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
+  mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
+                                                            "nonsense", "missense"))) %>% 
+  mutate(hgvs_pro = ifelse(grepl("=$", hgvs_pro), paste(substr(hgvs_pro, 1, 5), substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), substr(hgvs_pro,3, 5), sep = ''), hgvs_pro))
+```
+
+```{r esm with old}
+match_old <- merge(esm, old, by = "hgvs_pro") %>% 
+  rename(esm.LLR = score.x, fitness.score=score.y) %>% 
+  distinct() %>% 
+  drop_na()
+```
+
+
+
+
+```{r}
+old_facet <- ggplot(match_old, aes(x = fitness.score, y = esm.LLR)) + 
+  geom_point(aes(color=wt, alpha = 0.9)) +
+  facet_wrap(~ wt, scales = "fixed") +
+  coord_cartesian(xlim = c(-1, 2.5)) +
+  # geom_smooth(method = "lm", aes(color=wildtype))+
+  stat_cor(method= "spearman", label.x = -0.5, label.y = -5, cor.coef.name = "rho", aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45), legend.position = "none")
+
+# ggsave(filename = "../output/esm_old.jpg", dpi = 600)
+```
+
+```{r}
+old_whole <- ggplot(match_old, aes(x = fitness.score, y = esm.LLR)) + 
+  geom_point(aes(color=wt, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
+  stat_cor(method= "spearman", label.x = 4, label.y = -5, cor.coef.name = "rho",aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw()+
+  theme(legend.position = "bottom") +
+  theme(legend.key.size = unit(0.5, "cm"))
+
+old_facet + old_whole
+# ggsave(filename = "../output/esm_old_side.jpg", dpi = 600, width = 13, height = 7)
+
+# ggsave(filename = "../output/esm_old_combine.jpg", dpi = 600)
+```
+
+
+
+
+```{r new}
+new <- read.csv(file = "../data/select_t1_simple_aa.csv", skip = 16) %>% 
+select(hgvs_pro, score, se) %>% 
+  mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
+  mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
+  mutate(type= ifelse(grepl("=", mut), "synonymous", ifelse(grepl("Ter$", mut), 
+                                                            "nonsense", "missense"))) %>%
+  mutate(hgvs_pro = ifelse(grepl("=$", hgvs_pro), paste(substr(hgvs_pro, 1, 5), substr(hgvs_pro, 6, nchar(hgvs_pro) - 1), substr(hgvs_pro,3, 5), sep = ''), hgvs_pro))
+```
+
+```{r match esm new}
+matched_df <- left_join(new, esm, join_by("hgvs_pro")) %>% 
+  rename(fitness.score=score.x, esm.LLR = score.y)
+```
+
+```{r}
+new_facet <- ggplot(matched_df, aes(x = fitness.score, y = esm.LLR)) + 
+  geom_point(aes(color=wt, alpha = 0.9)) +
+  facet_wrap(~ wt, scales = "fixed") +
+  # geom_smooth(method = "lm", aes(color=wildtype))+
+  stat_cor(method= "spearman", label.x = -0.5, label.y = -5, cor.coef.name = "rho", aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45), legend.position = "none")
+
+
+# ggsave(filename = "../output/new_esm_facet.jpg", dpi = 600)
+```
+
+```{r}
+new_whole <- ggplot(matched_df, aes(x = fitness.score, y = esm.LLR)) + 
+  geom_point(aes(color=wt, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
+  stat_cor(method= "spearman", label.x = -0.3, label.y = -5, cor.coef.name = "rho",aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw()+
+  theme(legend.position = "bottom") +
+  theme(legend.key.size = unit(0.5, "cm")) 
+
+
+new_facet + new_whole
+# ggsave(filename = "../output/esm_new_combined.jpg", dpi = 600, width = 13, height = 7)
+
+```
+
+
+```{r new old}
+matched_new_old <- merge(new, old, by = "hgvs_pro") %>% 
+  rename(new.score = score.x, old.score = score.y, new.se = se.x, 
+         old.se = se.y, mut = mut.x, wt = wt.x, type = type.x) %>% 
+  distinct() %>% 
+  select(new.score, old.score, new.se, old.se, mut, wt, type)
+```
+
+```{r}
+new_old_combined <- ggplot(matched_new_old, aes(x = new.score, y = old.score)) + 
+  geom_point(aes(color=wt, alpha=0.9)) +
+  # geom_smooth(method = "lm") +
+  stat_cor(method= "spearman", label.x = 0, label.y = 2, cor.coef.name = "rho",aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw()+
+  theme(legend.position = "bottom") +
+  theme(legend.key.size = unit(0.5, "cm")) 
+
+
+new_old_facet <- ggplot(matched_new_old, aes(x = new.score, y = old.score)) + 
+  geom_point(aes(color=wt, alpha = 0.9)) +
+  facet_wrap(~ wt, scales = "fixed") +
+  # geom_smooth(method = "lm", aes(color=wildtype))+
+  stat_cor(method= "spearman", label.x = 0, label.y = 2, cor.coef.name = "rho", aes(label = ..r.label..)) +
+  geom_rug(aes(color=wt))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45), legend.position = "none")
+
+new_old_facet + new_old_combined
+
+ggsave(filename = "../output/new_old_combined.jpg", dpi = 600, width = 13, height = 7)
+```
+
+

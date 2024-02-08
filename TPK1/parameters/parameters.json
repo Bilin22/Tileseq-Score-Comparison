@@ -1,0 +1,118 @@
+{
+ "project": "TPK1 tileseq",
+"template": {
+ "geneName": "TPK1",
+"seq": "GTCTTGCTATCAAGTATAAATAGACCTGCAATTATTAATCTTTTGTTTCCTCGTCATTGTTCTCGTTCCCTTTCTTCCTTGTTTCTTTTTCTGCACAATATTTCAAGCTATACCAAGCATACAATCAACTCCAAGCTTGAAGCAAGCCTCCTGAAAGACAAGTTTGTACAAAAAAGTTGGCATGGAGCATGCCTTTACCCCGTTGGAGCCCCTGCTTTCCACTGGGAATTTGAAGTACTGCCTTGTAATTCTTAATCAGCCTTTGGACAACTATTTTCGTCATCTTTGGAACAAAGCTCTTTTAAGAGCCTGTGCCGATGGAGGTGCCAACCGCTTATATGATATCACCGAAGGAGAGAGAGAAAGCTTTTTGCCTGAATTCATCAATGGAGACTTTGATTCTATTAGGCCTGAAGTCAGAGAATACTATGCTACTAAGGGATGTGAGCTCATTTCAACTCCTGATCAAGACCACACTGACTTTACTAAGTGCCTTAAAATGCTCCAAAAGAAGATAGAAGAAAAAGACTTAAAGGTTGATGTGATCGTGACACTGGGAGGCCTTGCTGGGCGTTTTGACCAGATTATGGCATCTGTGAATACCTTGTTCCAAGCGACTCACATCACTCCTTTTCCAATTATAATAATCCAAGAGGAATCGCTGATCTACCTGCTCCAACCAGGAAAGCACAGGTTGCATGTAGACACTGGAATGGAGGGTGATTGGTGTGGCCTTATTCCTGTTGGACAGCCTTGTAGTCAGGTTACAACCACAGGCCTCAAGTGGAACCTCACAAATGATGTGCTTGCTTTTGGAACATTGGTCAGTACTTCCAATACCTACGACGGGTCTGGTGTTGTGACTGTGGAAACTGACCACCCACTCCTCTGGACCATGGCCATCAAAAGCTAACCAACTTTCTTGTACAAAGTGGTTTGATGGCCGCTAAGTAAGTAAGACGTCGAGCTCTAAGTAAGTAACGGCCGCCACCGCGGTGGAGCTTTGGACTTCTTCGCCAGAGGTTTGGTCAAGTCTCCAATCAAGGTTGTCGGCTTGTCTACCTTGCCAGAAATTTACGAAAAGATGGAAAAGGGTCAAATCGTTGGTAGATACGTTGTTGACACTTCTAAATAAGCGAATTTCTTATGATTTATGATTTTTATTATTAAATAAGTTATAAAAAAAATAAGTGTATACAAATTTTAAAGTGACTCTTAGGTTTTAAAACGAAAATTCTTATTCTTGAGTAACTCTTTCCTGTAGGTCAGGTTGCTTTCTCAGGTATAGCATGAGGTCGCTCTTATTGACCACACCTCTACCGGCATGCCGAGCAAATGCCTGCAAATCGCTCCCCATTTCACCCAATTGTAGATATGCTAACTCCAGCAATGAGTTGATGAA",
+"cds_start": 182,
+"cds_end": 913,
+"uniprot": "Q9H3S4" 
+},
+"assay": {
+ "name": "Yeast complementation",
+"selection": "Positive" 
+},
+"conditions": {
+ "names": [ "nonselect", "select", "wtSelect", "wtNonselect" ],
+"definitions": [ {
+ "Condition 1": "select",
+"Relationship": "is_selection_for",
+"Condition 2": "nonselect" 
+},
+{
+ "Condition 1": "wtSelect",
+"Relationship": "is_wt_control_for",
+"Condition 2": "select" 
+},
+{
+ "Condition 1": "wtNonselect",
+"Relationship": "is_wt_control_for",
+"Condition 2": "nonselect" 
+} ] 
+},
+"numReplicates": {
+ "nonselect": 2,
+"select": 2,
+"wtSelect": 2,
+"wtNonselect": 2 
+},
+"numTimepoints": {
+ "nonselect": 1,
+"select": 1,
+"wtSelect": 1,
+"wtNonselect": 1 
+},
+"regions": {
+ "Region Number": [ 1 ],
+"Start AA": [ 2 ],
+"End AA": [ 243 ] 
+},
+"tiles": [ {
+   "Tile Number": 1,
+  "Start AA": 2,
+  "End AA": 34 
+  },
+{
+   "Tile Number": 2,
+  "Start AA": 35,
+  "End AA": 67 
+  },
+{
+   "Tile Number": 3,
+  "Start AA": 68,
+  "End AA": 101 
+  },
+{
+   "Tile Number": 4,
+  "Start AA": 102,
+  "End AA": 136 
+  },
+{
+   "Tile Number": 5,
+  "Start AA": 137,
+  "End AA": 172 
+  },
+{
+   "Tile Number": 6,
+  "Start AA": 173,
+  "End AA": 209 
+  },
+{
+   "Tile Number": 7,
+  "Start AA": 210,
+  "End AA": 243 
+  } ],
+"timepoints": {
+ "Time point name": [ "1" ],
+"Time": [        0 ],
+"Unit": [ "h" ] 
+},
+"samples": {
+ "Sample ID": [ "1", "2", "3", "4", "5", "6", "7", "49", "50", "51", "52", "53", "54", "55", "13", "14", "15", "16", "17", "18", "19", "61", "62", "63", "64", "65", "66", "67", "25", "26", "27", "28", "29", "30", "31", "73", "74", "75", "76", "77", "78", "79", "25", "26", "27", "28", "29", "30", "31", "73", "74", "75", "76", "77", "78", "79" ],
+"Tile ID": [ 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7 ],
+"Condition": [ "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "nonselect", "select", "select", "select", "select", "select", "select", "select", "select", "select", "select", "select", "select", "select", "select", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtNonselect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect", "wtSelect" ],
+"Time point": [ "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" ],
+"Replicate": [ 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 ] 
+},
+"varcaller": {
+ "posteriorThreshold":      0.9,
+"minCover":      0.9,
+"mutRate":   0.0025,
+"maxDrop":      0.2 
+},
+"scoring": {
+ "countThreshold": 21,
+"pseudo.n": 8,
+"sdThreshold":      0.3,
+"wtQuantile":      0.9,
+"cvDeviation":       10,
+"lastFuncPos": "Inf",
+"lpdCutoff":        1 
+},
+"pivots": {
+ "Condition": [ "select", "select" ],
+"Time point": [ "1", "1" ],
+"Region": [        1,        1 ],
+"Type": [ "nonsense", "synonymous" ],
+"Value": [   -1.413,   -0.188 ] 
+} 
+}

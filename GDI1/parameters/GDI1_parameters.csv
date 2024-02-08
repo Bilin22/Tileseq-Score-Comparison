@@ -1,0 +1,177 @@
+Project name:,GDI1 Tileseq,,,
+,,,,
+Template construct,,,,
+Gene name:,GDI1,,,
+Sequence:,GTCTTGCTATCAAGTATAAATAGACCTGCAATTATTAATCTTTTGTTTCCTCGTCATTGTTCTCGTTCCCTTTCTTCCTTGTTTCTTTTTCTGCACAATATTTCAAGCTATACCAAGCATACAATCAACTCCAAGCTTGAAGCAAGCCTCCTGAAAGACAAGTTTGTACAAAAAAGTTGGCATGGACGAGGAATACGATGTGATCGTGCTGGGGACCGGTCTCACCGAATGCATCCTGTCGGGCATCATGTCTGTGAACGGGAAGAAGGTGCTGCACATGGACCGGAACCCCTACTACGGGGGCGAGAGCTCCTCCATCACACCCCTGGAGGAGCTGTATAAGCGTTTTCAGTTGCTGGAGGGGCCCCCTGAGTCGATGGGCCGAGGCCGAGACTGGAATGTTGACCTGATTCCCAAATTCCTCATGGCTAACGGGCAGCTGGTAAAGATGCTACTGTATACAGAGGTGACTCGCTACCTGGACTTCAAGGTGGTGGAGGGCAGCTTTGTCTACAAGGGGGGCAAGATCTACAAAGTGCCGTCCACTGAGACTGAGGCCTTGGCTTCCAATCTGATGGGCATGTTTGAGAAACGGCGCTTCCGCAAGTTCCTGGTGTTTGTGGCAAACTTCGATGAGAATGACCCCAAGACCTTTGAGGGCGTTGACCCCCAGACTACCAGCATGCGTGACGTCTACCGGAAGTTTGATCTGGGCCAGGATGTCATCGATTTCACTGGCCATGCCCTGGCGCTCTACCGCACTGATGACTACCTGGACCAGCCCTGCCTTGAGACCGTCAACCGCATCAAGTTGTACAGTGAGTCCCTGGCCCGGTATGGCAAGAGCCCATATTTATACCCGCTCTACGGCTTGGGCGAGCTGCCCCAGGGTTTTGCAAGATTGAGTGCCATCTATGGGGGGACATATATGCTGAACAAACCTGTGGATGACATCATCATGGAGAACGGCAAGGTGGTGGGCGTGAAGTCTGAGGGAGAGGTGGCCCGCTGCAAGCAGCTGATCTGTGACCCCAGCTACATCCCGGACCGTGTGCGGAAGGCTGGCCAGGTTATCCGCATCATCTGTATCCTTAGCCACCCCATCAAGAACACCAACGACGCCAACTCCTGCCAAATAATCATCCCCCAGAACCAGGTCAACAGGAAGTCAGACATCTACGTGTGCATGATCTCCTATGCACACAACGTGGCGGCCCAGGGCAAGTACATAGCTATTGCCAGCACTACTGTGGAGACCACGGACCCTGAAAAGGAGGTGGAGCCGGCTCTGGAGCTGTTGGAGCCCATTGACCAGAAGTTTGTGGCTATCAGTGACTTGTATGAGCCCATTGATGATGGTTGTGAGAGCCAGGTGTTCTGTTCCTGCTCCTACGATGCCACCACACACTTTGAGACAACCTGCAACGACATCAAAGACATCTACAAACGCATGGCTGGCACGGCCTTTGACTTTGAGAACATGAAGCGCAAACAGAACGACGTCTTTGGAGAAGCTGAGCAGTGACCAACTTTCTTGTACAAAGTGGTTTGATGGCCGCTAAGTAAGTAAGACGTCGAGCTCTAAGTAAGTAACGGCCGCCACCGCGGTGGAGCTTTGGACTTCTTCGCCAGAGGTTTGGTCAAGTCTCCAATCAAGGTTGTCGGCTTGTCTACCTTGCCAGAAATTTACGAAAAGATGGAAAAGGGTCAAATCGTTGGTAGATACGTTGTTGACACTTCTAAATAAGCGAATTTCTTATGATTTATGATTTTTATTATTAAATAAGTTATAAAAAAAATAAGTGTATACAAATTTTAAAGTGACTCTTAGGTTTTAAAACGAAAATTCTTATTCTTGAGTAACTCTTTCCTGTAGGTCAGGTTGCTTTCTCAGGTATAGCATGAGGTCGCTCTTATTGACCACACCTCTACCGGCATGCCGAGCAAATGCCTGCAAATCGCTCCCCATTTCACCCAATTGTAGATATGCTAACTCCAGCAATGAGTTGATGAA,,,
+CDS start:,182,,,
+CDS end:,1525,,,
+Uniprot Accession: ,P31150,,,
+,,,,
+Assay Type:,,,,
+Assay Name:,Yeast complementation,,,
+Assay Description:,Functional complementation in yeast based on glutathione auxotrophy,,,
+Negative selection?,No,,,
+,,,,
+Conditions and replicates,,,,
+Condition IDs:,nonselect,select,wtSelect,wtNonselect
+Descriptions:,pre-selection library,"post-selection library, glutathione-deficient media",wildtype control for post-selection condition,wildtype control for pre-selection condition
+Number of Replicates:,2,2,2,2
+Number of time points:,1,1,1,1
+,,,,
+Mutagenesis Regions,,,,
+Region Number,Start AA,End AA,,
+1,2,447,,
+,,,,
+Sequencing Tiles,,,,
+Tile Number,Start AA,End AA,,
+1,2,36,,
+2,37,73,,
+3,74,111,,
+4,112,147,,
+5,148,184,,
+6,185,220,,
+7,221,258,,
+8,259,294,,
+9,295,331,,
+10,332,368,,
+11,369,405,,
+12,406,442,,
+13,443,447,,
+,,,,
+Condition definitions,,,,
+Condition 1,Relationship,Condition 2,,
+select,is_selection_for,nonselect,,
+wtSelect,is_wt_control_for,select,,
+wtNonselect,is_wt_control_for,nonselect,,
+,,,,
+Time point definitions,,,,
+Time point name,Time,Unit,,
+1,0,h,,
+,,,,
+Sequencing samples,,,,
+Sample ID,Tile ID,Condition,Time point,Replicate
+97,1,nonselect,1,1
+98,2,nonselect,1,1
+99,3,nonselect,1,1
+100,4,nonselect,1,1
+101,5,nonselect,1,1
+102,6,nonselect,1,1
+103,7,nonselect,1,1
+104,8,nonselect,1,1
+105,9,nonselect,1,1
+106,10,nonselect,1,1
+107,11,nonselect,1,1
+108,12,nonselect,1,1
+121,13,nonselect,1,1
+145,1,nonselect,1,2
+146,2,nonselect,1,2
+147,3,nonselect,1,2
+148,4,nonselect,1,2
+149,5,nonselect,1,2
+150,6,nonselect,1,2
+151,7,nonselect,1,2
+152,8,nonselect,1,2
+153,9,nonselect,1,2
+154,10,nonselect,1,2
+155,11,nonselect,1,2
+156,12,nonselect,1,2
+169,13,nonselect,1,2
+109,1,select,1,1
+110,2,select,1,1
+111,3,select,1,1
+112,4,select,1,1
+113,5,select,1,1
+114,6,select,1,1
+115,7,select,1,1
+116,8,select,1,1
+117,9,select,1,1
+118,10,select,1,1
+119,11,select,1,1
+120,12,select,1,1
+122,13,select,1,1
+157,1,select,1,2
+158,2,select,1,2
+159,3,select,1,2
+160,4,select,1,2
+161,5,select,1,2
+162,6,select,1,2
+163,7,select,1,2
+164,8,select,1,2
+165,9,select,1,2
+166,10,select,1,2
+167,11,select,1,2
+168,12,select,1,2
+170,13,select,1,2
+133,1,wtNonselect,1,1
+134,2,wtNonselect,1,1
+135,3,wtNonselect,1,1
+136,4,wtNonselect,1,1
+137,5,wtNonselect,1,1
+138,6,wtNonselect,1,1
+139,7,wtNonselect,1,1
+140,8,wtNonselect,1,1
+141,9,wtNonselect,1,1
+142,10,wtNonselect,1,1
+143,11,wtNonselect,1,1
+144,12,wtNonselect,1,1
+123,13,wtNonselect,1,1
+181,1,wtNonselect,1,2
+182,2,wtNonselect,1,2
+183,3,wtNonselect,1,2
+184,4,wtNonselect,1,2
+185,5,wtNonselect,1,2
+186,6,wtNonselect,1,2
+187,7,wtNonselect,1,2
+188,8,wtNonselect,1,2
+189,9,wtNonselect,1,2
+190,10,wtNonselect,1,2
+191,11,wtNonselect,1,2
+192,12,wtNonselect,1,2
+171,13,wtNonselect,1,2
+133,1,wtSelect,1,1
+134,2,wtSelect,1,1
+135,3,wtSelect,1,1
+136,4,wtSelect,1,1
+137,5,wtSelect,1,1
+138,6,wtSelect,1,1
+139,7,wtSelect,1,1
+140,8,wtSelect,1,1
+141,9,wtSelect,1,1
+142,10,wtSelect,1,1
+143,11,wtSelect,1,1
+144,12,wtSelect,1,1
+123,13,wtSelect,1,1
+181,1,wtSelect,1,2
+182,2,wtSelect,1,2
+183,3,wtSelect,1,2
+184,4,wtSelect,1,2
+185,5,wtSelect,1,2
+186,6,wtSelect,1,2
+187,7,wtSelect,1,2
+188,8,wtSelect,1,2
+189,9,wtSelect,1,2
+190,10,wtSelect,1,2
+191,11,wtSelect,1,2
+192,12,wtSelect,1,2
+171,13,wtSelect,1,2
+,,,,
+,,,,
+,,,,
+,,,,
+Variant calling parameters,,,,
+Posterior threshold:,0.9,,,
+Minimum coverage:,0.9,,,
+Per-base mutation rate:,0.0025,,,
+Maximum depth drop:,0.2,,,
+,,,,
+Scoring function parameters,,,,
+Minimum read count:,10,,,
+WT filter quantile:,0.9,,,
+Pseudo-replicates:,8,,,
+SD threshold:,0.3,,,
+Replicate disagreement factor:,10,,,
+Last functional AA position:,Inf,,,
+Maximum logPhi SD:,1,,,
+,,,,
+Score scaling pivots,,,,
+Condition,Time point,Region,Type,Value

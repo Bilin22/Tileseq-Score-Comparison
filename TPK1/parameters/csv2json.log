@@ -1,0 +1,7 @@
+2023-10-11_16:54:08 INFO: Running tileseqMave version 1.2.4
+2023-10-11_16:54:09 WARNING: Duplicated Sample IDs!!
+ The following samples are used multiple times:  25, 26, 27, 28, 29, 30, 31, 73, 74, 75, 76, 77, 78, 79
+2023-10-11_16:54:09 INFO: Writing output to TPK1_paramters.json 
+
+2023-10-11_16:54:09 INFO: Conversion successful!
+
