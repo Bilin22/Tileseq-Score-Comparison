@@ -1,0 +1,21 @@
+# SUMO1 new
+Rscript biochemistry.R "~/Desktop/Github Projects/Tileseq_Scores/SUMO1/SUMO1_2023-05-09-16-17-21_scores/select_t1_simple_aa.csv" --pdb "3UIP" --chain "B" --outputFile "SUMO1_biochemistry.pdf"
+
+
+# UBE2I new
+Rscript biochemistry.R "/Users/admin/Desktop/Github Projects/Tileseq_Scores/UBE2I/UBE2I_2023-05-26-14-05-02_scores/select_t1_simple_aa.csv" --pdb "1KPS" --chain "A" --outputFile "UBE2I_biochemistry.pdf"
+
+# CALM1 new
+# chain A,B,C,D
+Rscript biochemistry.R "/Users/admin/Desktop/Github Projects/Tileseq_Scores/CALM1/CALM1_2023-05-11-15-58-48_scores/select_t1_simple_aa.csv" --pdb "3G43" --chain "A" --outputFile "CALM1_A_biochemistry.pdf"
+
+Rscript biochemistry.R "/Users/admin/Desktop/Github Projects/Tileseq_Scores/CALM1/CALM1_2023-05-11-15-58-48_scores/select_t1_simple_aa.csv" --pdb "3G43" --chain "C" --outputFile "CALM1_C_biochemistry.pdf"
+
+
+# TPK1
+# chain A, B
+Rscript biochemistry.R "/Users/admin/Desktop/Github Projects/Tileseq_Scores/TPK1/TPK1_2023-10-18-23-29-12_scores/select_t1_simple_aa.csv" --pdb "3S4Y" --chain "A" --outputFile "TPK1_A_biochemistry.pdf"
+
+# GDI1
+Rscript biochemistry.R "/Users/admin/Desktop/Github Projects/Tileseq_Scores/GDI1/GDI1_2023-06-27-12-50-28_scores/select_t1_simple_aa.csv" --pdb "1LV0" --chain "A" --outputFile "GDI1_A_biochemistry.pdf"
+
