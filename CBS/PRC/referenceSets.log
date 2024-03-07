@@ -1,0 +1,30 @@
+2024-02-29_18:15:55 INFO: Reading input...
+2024-02-29_18:15:55 FATAL: Error in FUN(X[[i]], ...) : 
+  File urn_mavedb_00000005-a-1_scores.csv is not a valid MaveDB file!
+Calls: lapply -> FUN
+ 
+ 
+2024-02-29_18:21:20 INFO: Reading input...
+2024-02-29_18:21:20 FATAL: Error in FUN(X[[i]], ...) : 
+  File urn_mavedb_00000005-a-1_scores.csv is not a valid MaveDB file!
+Calls: lapply -> FUN
+ 
+ 
+2024-02-29_18:22:44 INFO: Reading input...
+2024-02-29_18:22:44 FATAL: Error in FUN(X[[i]], ...) : 
+  File urn_mavedb_00000005-a-1_scores.csv is not a valid MaveDB file!
+Calls: lapply -> FUN
+ 
+ 
+2024-02-29_18:23:17 INFO: Reading input...
+2024-02-29_18:23:17 FATAL: Error in FUN(X[[i]], ...) : 
+  File urn_mavedb_00000005-a-1_scores.csv is not a valid MaveDB file!
+Calls: lapply -> FUN
+ 
+ 
+2024-02-29_18:26:21 INFO: Reading input...
+2024-02-29_18:26:21 FATAL: Error in FUN(X[[i]], ...) : 
+  File urn_mavedb_00000005-a-1_scores.csv is not a valid MaveDB file!
+Calls: lapply -> FUN
+ 
+ 
