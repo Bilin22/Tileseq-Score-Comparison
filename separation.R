@@ -5,7 +5,7 @@ library(tidyverse)
 # score_df <- read.csv(file = 
 #                        "~/Desktop/Github Projects/Tileseq_Scores/CALM1/Score_comparison/data/urn_mavedb_00000001-c-1_scores.csv")[, c(4, 5)] %>%
 score_df <- read.csv(file =
-                    "~/Desktop/Github Projects/Tileseq_Scores/CALM1/Score_comparison/data/urn_mavedb_00000001-c-1_scores.csv")[, c(4, 5)] %>%
+                    "CBS/PRC/mavedb_high_b6.csv") %>%
   distinct() %>% 
   mutate(mut=substr(hgvs_pro, nchar(hgvs_pro)-2, nchar(hgvs_pro))) %>%
   mutate(wt=substr(hgvs_pro, 3, 5)) %>% 
@@ -35,7 +35,7 @@ ggplot(score_df, aes(x = score, fill = type)) +
                         "synonymous" = "darkgreen", 
                         "missense" = "grey")) +
   geom_text(x = mean(range(score_df$score)), 
-            y = 2, label = paste("Cohen's d: ", d_score))+
+            y = 2.5, label = paste("Cohen's d: ", d_score))+
   theme_minimal() +
   theme(legend.position = c(0, 1), legend.justification = c(0, 1)) +
   guides(fill = guide_legend(title = NULL))+
@@ -43,6 +43,6 @@ ggplot(score_df, aes(x = score, fill = type)) +
   scale_y_continuous(labels = abs, 
                      breaks = scales::pretty_breaks(n = 10))  
 
-ggsave("CALM1_old_separation.png", height = 5, width = 7)
+ggsave("~/Desktop/Github Projects/Tileseq-Score-Comparison/CBS/CBS-figure/high_b6.png", height = 5, width = 7)
 
 
