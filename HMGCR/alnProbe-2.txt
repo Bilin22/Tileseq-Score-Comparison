@@ -1,0 +1,130 @@
+Sample 100
+   1598 *
+   8402 HMGCR-Tile04
+Sample 109
+      7 *
+   9473 HMGCR-Tile01
+    520 HMGCR-Tile02
+Sample 110
+   1967 *
+   8033 HMGCR-Tile02
+Sample 111
+     30 *
+   2382 HMGCR-Tile02
+   6936 HMGCR-Tile03
+    652 HMGCR-Tile04
+Sample 112
+   1655 *
+   8345 HMGCR-Tile04
+Sample 121
+      4 *
+   9366 HMGCR-Tile01
+    630 HMGCR-Tile02
+Sample 122
+   1920 *
+      4 HMGCR-Tile01
+   8076 HMGCR-Tile02
+Sample 123
+     22 *
+   2395 HMGCR-Tile02
+   6946 HMGCR-Tile03
+    637 HMGCR-Tile04
+Sample 124
+   1629 *
+   8371 HMGCR-Tile04
+Sample 133
+      6 *
+   9359 HMGCR-Tile01
+    635 HMGCR-Tile02
+Sample 134
+   2032 *
+   7967 HMGCR-Tile02
+      1 HMGCR-Tile03
+Sample 135
+     25 *
+   2546 HMGCR-Tile02
+   6784 HMGCR-Tile03
+    645 HMGCR-Tile04
+Sample 136
+   1774 *
+   8226 HMGCR-Tile04
+Sample 13
+      2 *
+   9400 HMGCR-Tile01
+    598 HMGCR-Tile02
+Sample 14
+   1832 *
+   8167 HMGCR-Tile02
+      1 HMGCR-Tile03
+Sample 15
+     24 *
+   2410 HMGCR-Tile02
+   6883 HMGCR-Tile03
+    683 HMGCR-Tile04
+Sample 16
+   1585 *
+   8415 HMGCR-Tile04
+Sample 1
+      9 *
+   9402 HMGCR-Tile01
+    589 HMGCR-Tile02
+Sample 25
+      6 *
+   9405 HMGCR-Tile01
+    589 HMGCR-Tile02
+Sample 26
+   1920 *
+   8080 HMGCR-Tile02
+Sample 27
+     21 *
+   2418 HMGCR-Tile02
+   6885 HMGCR-Tile03
+    676 HMGCR-Tile04
+Sample 28
+   1617 *
+   8383 HMGCR-Tile04
+Sample 2
+   1918 *
+   8081 HMGCR-Tile02
+      1 HMGCR-Tile03
+Sample 37
+      6 *
+   9356 HMGCR-Tile01
+    638 HMGCR-Tile02
+Sample 38
+   2046 *
+   7954 HMGCR-Tile02
+Sample 39
+     20 *
+   2489 HMGCR-Tile02
+   6784 HMGCR-Tile03
+    707 HMGCR-Tile04
+Sample 3
+     27 *
+   2512 HMGCR-Tile02
+   6837 HMGCR-Tile03
+    624 HMGCR-Tile04
+Sample 40
+   1644 *
+   8356 HMGCR-Tile04
+Sample 4
+   1665 *
+   8335 HMGCR-Tile04
+Sample 97
+      8 *
+   9390 HMGCR-Tile01
+    602 HMGCR-Tile02
+Sample 98
+   1931 *
+   8069 HMGCR-Tile02
+Sample 99
+     37 *
+   2493 HMGCR-Tile02
+   6800 HMGCR-Tile03
+    670 HMGCR-Tile04
+Sample Run2
+   8639 *
+    405 HMGCR-Tile01
+    264 HMGCR-Tile02
+    253 HMGCR-Tile03
+    439 HMGCR-Tile04

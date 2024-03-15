@@ -1,0 +1,67 @@
+Sample 100
+  10000 *
+Sample 109
+  10000 *
+Sample 110
+  10000 *
+Sample 111
+  10000 *
+Sample 112
+  10000 *
+Sample 121
+  10000 *
+Sample 122
+  10000 *
+Sample 123
+  10000 *
+Sample 124
+  10000 *
+Sample 133
+  10000 *
+Sample 134
+  10000 *
+Sample 135
+  10000 *
+Sample 136
+  10000 *
+Sample 13
+  10000 *
+Sample 14
+  10000 *
+Sample 15
+  10000 *
+Sample 16
+  10000 *
+Sample 1
+  10000 *
+Sample 25
+  10000 *
+Sample 26
+  10000 *
+Sample 27
+  10000 *
+Sample 28
+  10000 *
+Sample 2
+  10000 *
+Sample 37
+  10000 *
+Sample 38
+  10000 *
+Sample 39
+  10000 *
+Sample 3
+  10000 *
+Sample 40
+  10000 *
+Sample 4
+  10000 *
+Sample 97
+  10000 *
+Sample 98
+  10000 *
+Sample 99
+  10000 *
+Sample Run2
+   1570 *
+   8430 phiX

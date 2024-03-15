@@ -1,0 +1,221 @@
+{
+ "project": "MTHFR with WT background",
+"template": {
+ "geneName": "MTHFR",
+"seq": "GTCTTGCTATCAAGTATAAATAGACCTGCAATTATTAATCTTTTGTTTCCTCGTCATTGTTCTCGTTCCCTTTCTTCCTTGTTTCTTTTTCTGCACAATATTTCAAGCTATACCAAGCATACAATCAACTCCAAGCTTGAAGCAAGCCTCCTGAAAGACAAGTTTGTACAAAAAAGTTGGCATGGTGAACGAAGCCAGAGGAAACAGCAGCCTCAACCCCTGCTTGGAGGGCAGTGCCAGCAGTGGCAGTGAGAGCTCCAAAGATAGTTCGAGATGTTCCACCCCGGGCCTGGACCCCGAGCGGCATGAGAGACTCCGGGAGAAGATGAGGCGGCGATTGGAATCTGGTGACAAGTGGTTCTCCCTGGAATTCTTCCCTCCTCGAACTGCTGAGGGAGCTGTCAATCTCATCTCAAGGTTTGACCGGATGGCAGCAGGTGGCCCCCTCTACATAGACGTGACCTGGCACCCAGCAGGTGACCCTGGCTCAGACAAGGAGACCTCCTCCATGATGATCGCCAGCACCGCCGTGAACTACTGTGGCCTGGAGACCATCCTGCACATGACCTGCTGCCGTCAGCGCCTGGAGGAGATCACGGGCCATCTGCACAAAGCTAAGCAGCTGGGCCTGAAGAACATCATGGCGCTGCGGGGAGACCCAATAGGTGACCAGTGGGAAGAGGAGGAGGGAGGCTTCAACTACGCAGTGGACCTGGTGAAGCACATCCGAAGTGAGTTTGGTGACTACTTTGACATCTGTGTGGCAGGTTACCCCAAAGGCCACCCCGAAGCAGGGAGCTTTGAGGCTGACCTGAAGCACTTGAAGGAGAAGGTGTCTGCGGGAGCCGATTTCATCATCACGCAGCTTTTCTTTGAGGCTGACACATTCTTCCGCTTTGTGAAGGCATGCACCGACATGGGCATCACTTGCCCCATCGTCCCCGGGATCTTTCCCATCCAGGGCTACCACTCCCTTCGGCAGCTTGTGAAGCTGTCCAAGCTGGAGGTGCCACAGGAGATCAAGGACGTGATTGAGCCAATCAAAGACAACGATGCTGCCATCCGCAACTATGGCATCGAGCTGGCCGTGAGCCTGTGCCAGGAGCTTCTGGCCAGTGGCTTGGTGCCAGGCCTCCACTTCTACACCCTCAACCGCGAGATGGCTACCACAGAGGTGCTGAAGCGCCTGGGGATGTGGACTGAGGACCCCAGGCGTCCCCTACCCTGGGCTCTCAGCGCCCACCCCAAGCGCCGAGAGGAAGATGTACGTCCCATCTTCTGGGCCTCCAGACCAAAGAGTTACATCTACCGTACCCAGGAGTGGGACGAGTTCCCTAACGGCCGCTGGGGCAATTCCTCTTCCCCTGCCTTTGGGGAGCTGAAGGACTACTACCTCTTCTACCTGAAGAGCAAGTCCCCCAAGGAGGAGCTGCTGAAGATGTGGGGGGAGGAGCTGACCAGTGAAGAAAGTGTCTTTGAAGTCTTTGTTCTTTACCTCTCGGGAGAACCAAACCGGAATGGTCACAAAGTGACTTGCCTGCCCTGGAACGATGAGCCCCTGGCGGCTGAGACCAGCCTGCTGAAGGAGGAGCTGCTGCGGGTGAACCGCCAGGGCATCCTCACCATCAACTCACAGCCCAACATCAACGGGAAGCCGTCCTCCGACCCCATCGTGGGCTGGGGCCCCAGCGGGGGCTATGTCTTCCAGAAGGCCTACTTAGAGTTTTTCACTTCCCGCGAGACAGCGGAAGCACTTCTGCAAGTGCTGAAGAAGTACGAGCTCCGGGTTAATTACCACCTTGTCAATGTGAAGGGTGAAAACATCACCAATGCCCCTGAACTGCAGCCGAATGCTGTCACTTGGGGCATCTTCCCTGGGCGAGAGATCATCCAGCCCACCGTAGTGGATCCCGTCAGCTTCATGTTCTGGAAGGACGAGGCCTTTGCCCTGTGGATTGAGCGGTGGGGAAAGCTGTATGAGGAGGAGTCCCCGTCCCGCACCATCATCCAGTACATCCACGACAACTACTTCCTGGTCAACCTGGTGGACAATGACTTCCCACTGGACAACTGCCTCTGGCAGGTGGTGGAAGACACATTGGAGCTTCTCAACAGGCCCACCCAGAATGCGAGAGAAACGGAGGCTCCATGACCAACTTTCTTGTACAAAGTGGTTTGATGGCCGCTAAGTAAGTAAGACGTCGAGCTCTAAGTAAGTAACGGCCGCCACCGCGGTGGAGCTTTGGACTTCTTCGCCAGAGGTTTGGTCAAGTCTCCAATCAAGGTTGTCGGCTTGTCTACCTTGCCAGAAATTTACGAAAAGATGGAAAAGGGTCAAATCGTTGGTAGATACGTTGTTGACACTTCTAAATAAGCGAATTTCTTATGATTTATGATTTTTATTATTAAATAAGTTATAAAAAAAATAAGTGTATACAAATTTTAAAGTGACTCTTAGGTTTTAAAACGAAAATTCTTATTCTTGAGTAACTCTTTCCTGTAGGTCAGGTTGCTTTCTCAGGTATAGCATGAGGTCGCTCTTATTGACCACACCTCTACCGGCATGCCGAGCAAATGCCTGCAAATCGCTCCCCATTTCACCCAATTGTAGATATGCTAACTCCAGCAATGAGTTGATGAA",
+"cds_start": 182,
+"cds_end": 2152,
+"uniprot": "P42898" 
+},
+"assay": {
+ "name": "Yeast complementation",
+"selection": "Positive" 
+},
+"conditions": {
+ "names": [ "nsOld", "nsNew", "f12WT", "f25WT", "f100WT", "f200WT", "ctrlOld", "ctrlNew" ],
+"definitions": [ {
+ "Condition 1": "f12WT",
+"Relationship": "is_selection_for",
+"Condition 2": "nsOld" 
+},
+{
+ "Condition 1": "f25WT",
+"Relationship": "is_selection_for",
+"Condition 2": "nsOld" 
+},
+{
+ "Condition 1": "f100WT",
+"Relationship": "is_selection_for",
+"Condition 2": "nsOld" 
+},
+{
+ "Condition 1": "f200WT",
+"Relationship": "is_selection_for",
+"Condition 2": "nsNew" 
+},
+{
+ "Condition 1": "ctrlOld",
+"Relationship": "is_wt_control_for",
+"Condition 2": "f12WT" 
+},
+{
+ "Condition 1": "ctrlOld",
+"Relationship": "is_wt_control_for",
+"Condition 2": "f25WT" 
+},
+{
+ "Condition 1": "ctrlOld",
+"Relationship": "is_wt_control_for",
+"Condition 2": "f100WT" 
+},
+{
+ "Condition 1": "ctrlNew",
+"Relationship": "is_wt_control_for",
+"Condition 2": "f200WT" 
+},
+{
+ "Condition 1": "ctrlOld",
+"Relationship": "is_wt_control_for",
+"Condition 2": "nsOld" 
+},
+{
+ "Condition 1": "ctrlNew",
+"Relationship": "is_wt_control_for",
+"Condition 2": "nsNew" 
+} ] 
+},
+"numReplicates": {
+ "nsOld": 2,
+"nsNew": 2,
+"f12WT": 2,
+"f25WT": 2,
+"f100WT": 2,
+"f200WT": 2,
+"ctrlOld": 2,
+"ctrlNew": 2 
+},
+"numTimepoints": {
+ "nsOld": 1,
+"nsNew": 1,
+"f12WT": 1,
+"f25WT": 1,
+"f100WT": 1,
+"f200WT": 1,
+"ctrlOld": 1,
+"ctrlNew": 1 
+},
+"regions": {
+ "Region Number": [ 1, 2, 3, 4 ],
+"Start AA": [ 2, 148, 295, 475 ],
+"End AA": [ 147, 294, 474, 656 ] 
+},
+"tiles": [ {
+   "Tile Number": 1,
+  "Start AA": 2,
+  "End AA": 36 
+  },
+{
+   "Tile Number": 2,
+  "Start AA": 37,
+  "End AA": 72 
+  },
+{
+   "Tile Number": 3,
+  "Start AA": 73,
+  "End AA": 110 
+  },
+{
+   "Tile Number": 4,
+  "Start AA": 111,
+  "End AA": 147 
+  },
+{
+   "Tile Number": 5,
+  "Start AA": 148,
+  "End AA": 182 
+  },
+{
+   "Tile Number": 6,
+  "Start AA": 183,
+  "End AA": 219 
+  },
+{
+   "Tile Number": 7,
+  "Start AA": 220,
+  "End AA": 256 
+  },
+{
+   "Tile Number": 8,
+  "Start AA": 257,
+  "End AA": 294 
+  },
+{
+   "Tile Number": 9,
+  "Start AA": 295,
+  "End AA": 332 
+  },
+{
+   "Tile Number": 10,
+  "Start AA": 333,
+  "End AA": 367 
+  },
+{
+   "Tile Number": 11,
+  "Start AA": 368,
+  "End AA": 402 
+  },
+{
+   "Tile Number": 12,
+  "Start AA": 403,
+  "End AA": 439 
+  },
+{
+   "Tile Number": 13,
+  "Start AA": 440,
+  "End AA": 474 
+  },
+{
+   "Tile Number": 14,
+  "Start AA": 475,
+  "End AA": 510 
+  },
+{
+   "Tile Number": 15,
+  "Start AA": 511,
+  "End AA": 547 
+  },
+{
+   "Tile Number": 16,
+  "Start AA": 548,
+  "End AA": 583 
+  },
+{
+   "Tile Number": 17,
+  "Start AA": 584,
+  "End AA": 620 
+  },
+{
+   "Tile Number": 18,
+  "Start AA": 621,
+  "End AA": 654 
+  },
+{
+   "Tile Number": 19,
+  "Start AA": 655,
+  "End AA": 656 
+  } ],
+"timepoints": {
+ "Time point name": [ "1" ],
+"Time": [        0 ],
+"Unit": [ "h" ] 
+},
+"samples": {
+ "Sample ID": [ "601001", "601002", "601003", "601004", "601005", "601006", "601007", "601008", "601009", "601097", "601098", "601099", "601100", "601101", "601102", "601103", "601104", "601105", "601106", "604097", "604098", "604099", "604100", "604101", "604102", "604103", "604104", "604105", "604001", "604002", "604003", "604004", "604005", "604006", "604007", "604008", "604009", "604010", "601028", "601029", "601030", "601031", "601032", "601033", "601034", "601035", "601036", "601127", "601128", "601129", "601130", "601131", "601132", "601133", "601134", "601135", "601136", "604124", "604125", "604126", "604127", "604128", "604129", "604130", "604131", "604132", "604031", "604032", "604033", "604034", "604035", "604036", "604037", "604038", "604039", "604040", "601019", "601020", "601021", "601022", "601023", "601024", "601025", "601026", "601027", "601117", "601118", "601119", "601120", "601121", "601122", "601123", "601124", "601125", "601126", "604115", "604116", "604117", "604118", "604119", "604120", "604121", "604122", "604123", "604021", "604022", "604023", "604024", "604025", "604026", "604027", "604028", "604029", "604030", "601010", "601011", "601012", "601013", "601014", "601015", "601016", "601017", "601018", "601107", "601108", "601109", "601110", "601111", "601112", "601113", "601114", "601115", "601116", "604106", "604107", "604108", "604109", "604110", "604111", "604112", "604113", "604114", "604011", "604012", "604013", "604014", "604015", "604016", "604017", "604018", "604019", "604020", "312043", "312044", "312045", "312046", "312047", "312048", "312049", "312050", "312051", "312052", "312053", "312054", "312055", "312056", "312057", "312058", "312059", "312060", "312061", "312062", "312063", "312064", "312065", "312066", "312067", "312068", "312069", "312070", "312071", "312072", "312139", "312140", "312141", "312142", "312143", "312144", "312145", "312146", "312147", "312148", "312149", "312150", "312151", "312152", "312153", "312154", "312155", "312156", "312157", "312158", "312159", "312160", "312161", "312162", "312163", "312164", "312165", "312166", "312167", "312168", "1123097", "1123098", "1123099", "1123100", "1123101", "1123102", "1123103", "1123104", "1123109", "1123110", "1123111", "1123112", "1123113", "1123114", "1123115", "1123116", "601037", "601038", "601039", "601040", "601041", "601042", "601085", "601044", "601045", "601137", "601138", "601139", "601140", "601141", "601142", "601143", "601144", "601185", "601186", "604133", "604134", "604135", "604136", "604137", "604138", "604139", "604140", "604141", "604041", "604042", "604043", "604044", "604045", "604046", "604047", "604048", "604089", "604090", "312073", "312074", "312075", "312076", "312077", "312078", "312079", "312080", "312081", "312082", "312083", "312084", "312085", "312086", "312087", "312169", "312170", "312171", "312172", "312173", "312174", "312175", "312176", "312177", "312178", "312179", "312180", "312181", "312182", "312183", "1123169", "1123170", "1123171", "1123172", "1123181", "1123182", "1123183", "1123184" ],
+"Tile ID": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1, 2, 3, 4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 5, 6, 7, 8, 5, 6, 7, 8 ],
+"Condition": [ "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "nsOld", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "nsNew", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlOld", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew", "ctrlNew" ],
+"Time point": [ "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" ],
+"Replicate": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2 ] 
+},
+"varcaller": {
+ "posteriorThreshold":      0.9,
+"minCover":      0.9,
+"mutRate":   0.0025,
+"maxDrop":      0.2 
+},
+"scoring": {
+ "countThreshold": 100,
+"pseudo.n": 8,
+"sdThreshold":      0.3,
+"wtQuantile":      0.9,
+"cvDeviation":       10,
+"lastFuncPos": "Inf",
+"lpdCutoff":        1 
+},
+"pivots": {
+ "Condition": [ "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f12WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f25WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f100WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT", "f200WT" ],
+"Time point": [ "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" ],
+"Region": [        1,        1,        2,        2,        3,        3,        4,        4,        1,        1,        2,        2,        3,        3,        4,        4,        1,        1,        2,        2,        3,        3,        4,        4,        1,        1,        2,        2,        3,        3,        4,        4 ],
+"Type": [ "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous", "nonsense", "synonymous" ],
+"Value": [    -0.64,    -0.15,   -0.973,     0.05,   -0.883,   -0.098,   -0.475,    -0.04,   -0.673,   -0.126,    -0.97,     0.01,   -0.839,   -0.099,   -0.478,   -0.048,    -0.67,    -0.12,   -0.976,    0.057,   -0.793,   -0.097,   -0.495,    -0.05,   -0.707,   -0.067,   -0.711,   -0.001,   -0.666,   -0.018,    -0.44,   -0.015 ] 
+} 
+}
