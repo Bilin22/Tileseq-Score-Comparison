@@ -1,11 +1,9 @@
 # load required packages
 library(tidyverse)
 library(mavevis)
-# library(ggprism)
-# library(ggpubr)
 library(ggbeeswarm)
 library(argparser)
-# library(ggeasy)
+
 
 
 # parameters needed: (pdb.acc) PDB accession ,
@@ -139,8 +137,13 @@ consistency_check <- function(name, pdb.acc, main.chain,
          scale = 0.8)
 }
 
-consistency_check(args$name,args$pdb.acc, args$main.chain, 
-                  args$surfaceThreshold, args$coreThreshold, 
-                  args$burialThreshold, 
+consistency_check(args$name,args$pdb.acc, args$main.chain,
+                  args$surfaceThreshold, args$coreThreshold,
+                  args$burialThreshold,
                   args$map, args$outputFile)
+
+# consistency_check(args$name,args$pdb.acc, args$main.chain, 
+#                   args$surface.threshold, args$core.threshold, 
+#                   args$burial.threshold, 
+#                   args$map, args$output.file)
 
