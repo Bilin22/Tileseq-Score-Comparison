@@ -1,11 +1,11 @@
 # load required packages
 library(tidyverse)
 library(mavevis)
-library(ggprism)
-library(ggpubr)
+# library(ggprism)
+# library(ggpubr)
 library(ggbeeswarm)
 library(argparser)
-library(ggeasy)
+# library(ggeasy)
 
 
 # parameters needed: (pdb.acc) PDB accession ,
@@ -130,7 +130,6 @@ consistency_check <- function(name, pdb.acc, main.chain,
     theme(legend.position = "none") +
     ggtitle(label = paste("gene:",name,
                           "chain:",main.chain, "pdb.access:",pdb.acc)) +
-    ggeasy::easy_center_title()+
     theme_classic()
     # theme_light()
     # theme_prism()
